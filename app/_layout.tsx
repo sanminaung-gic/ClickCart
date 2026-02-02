@@ -1,13 +1,13 @@
-import { Stack } from "expo-router";
+import { AuthProvider } from "@/Context/authContext";
 import React from "react";
+import RootNavigator from "./RootNavigator";
 
-const _layout = () => {
+const RootLayout = () => {
   return (
-    <Stack>
-      <Stack.Screen name="login" options={{ headerShown: false }} />
-      <Stack.Screen name="(protected)" options={{ headerShown: false }} />
-    </Stack>
+    <AuthProvider>
+      <RootNavigator />
+    </AuthProvider>
   );
 };
 
-export default _layout;
+export default RootLayout;

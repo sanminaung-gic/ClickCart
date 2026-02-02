@@ -1,101 +1,70 @@
-import CartModal from "@/components/CartModal";
-import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import React from "react";
 import {
   Image,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const CATEGORIES = ["All", "Electronics", "Fashion", "Food", "Sports"];
-
-const PRODUCTS = [
-  {
-    id: "1",
-    name: "Wireless Headphone",
-    price: "50000 Ks",
-    image: require("@/assets/images/Earbud01.jpg"),
-  },
-  {
-    id: "2",
-    name: "Shirt",
-    price: "50000 Ks",
-    image: require("@/assets/images/shirt.jpg"),
-  },
-  {
-    id: "3",
-    name: "Shoes",
-    price: "50000 Ks",
-    image: require("@/assets/images/shoe01.jpeg"),
-  },
-  {
-    id: "4",
-    name: "Backpack",
-    price: "50000 Ks",
-    image: require("@/assets/images/Earbud01.jpg"),
-  },
-];
-
-export default function HomeScreen() {
-  const [cartVisible, setCartVisible] = useState(false);
-
+const shop = () => {
+  const PRODUCTS = [
+    {
+      id: "1",
+      name: "Wireless Headphone",
+      price: "50000 Ks",
+      image: require("@/assets/images/Earbud01.jpg"),
+    },
+    {
+      id: "2",
+      name: "Shirt",
+      price: "50000 Ks",
+      image: require("@/assets/images/shirt.jpg"),
+    },
+    {
+      id: "3",
+      name: "Shoes",
+      price: "50000 Ks",
+      image: require("@/assets/images/shoe01.jpeg"),
+    },
+    {
+      id: "4",
+      name: "Backpack",
+      price: "50000 Ks",
+      image: require("@/assets/images/Earbud01.jpg"),
+    },
+    {
+      id: "5",
+      name: "Wireless Headphone",
+      price: "50000 Ks",
+      image: require("@/assets/images/Earbud01.jpg"),
+    },
+    {
+      id: "6",
+      name: "Shirt",
+      price: "50000 Ks",
+      image: require("@/assets/images/shirt.jpg"),
+    },
+    {
+      id: "7",
+      name: "Shoes",
+      price: "50000 Ks",
+      image: require("@/assets/images/shoe01.jpeg"),
+    },
+    {
+      id: "8",
+      name: "Backpack",
+      price: "50000 Ks",
+      image: require("@/assets/images/Earbud01.jpg"),
+    },
+  ];
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Image
-              source={{
-                uri: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-              }}
-              style={styles.headerImage}
-            />
-          </View>
-
-          <TouchableOpacity
-            style={styles.notification}
-            onPress={() => setCartVisible(!cartVisible)}
-          >
-            <Ionicons name="cart-outline" size={22} color="#111827" />
-          </TouchableOpacity>
-        </View>
-        <CartModal
-          visible={cartVisible}
-          onClose={() => setCartVisible(false)}
-        />
-
-        {/* Search */}
-        <View style={styles.searchBox}>
-          <Ionicons name="search" size={20} color="#9CA3AF" />
-          <TextInput
-            placeholder="Search products"
-            placeholderTextColor="#9CA3AF"
-            style={styles.searchInput}
-          />
-        </View>
-
-        {/* Categories */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Categories</Text>
-        </View>
-
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {CATEGORIES.map((item) => (
-            <TouchableOpacity key={item} style={styles.categoryChip}>
-              <Text style={styles.categoryText}>{item}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-
-        {/* Popular Products */}
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Popular Products</Text>
+          <Text style={styles.sectionTitle}>All Products</Text>
           <TouchableOpacity>
             <Text style={styles.seeAll}>See all</Text>
           </TouchableOpacity>
@@ -113,7 +82,9 @@ export default function HomeScreen() {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
+
+export default shop;
 
 const styles = StyleSheet.create({
   container: {
