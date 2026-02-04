@@ -1,5 +1,8 @@
+import { cartContext } from "@/Context/cartContext";
+import { IMAGES } from "@/DATA/images";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import { router } from "expo-router";
+import React, { useContext } from "react";
 import {
   FlatList,
   Image,
@@ -12,62 +15,68 @@ import {
 } from "react-native";
 
 type Item = {
-  id: string;
+  id: number;
   name: string;
-  qty?: number;
+  image?: any;
   price?: number;
-  image?: string;
+  quantity: number;
 };
 
 type Props = {
   visible: boolean;
   onClose: () => void;
   items?: Item[];
-  onQtyChange?: (id: string, qty: number) => void;
+  onQtyChange?: (id: number, qty: number) => void;
   onCheckout?: () => void;
 };
 
-const CartModal = ({
-  visible,
-  onClose,
-  items = [],
-  onQtyChange,
-  onCheckout,
-}: Props) => {
-  const subtotal = items.reduce((s, i) => s + (i.price ?? 0) * (i.qty ?? 1), 0);
+const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
+  const cart = useContext(cartContext);
+  const itemsInCart = cart.items;
+
+  const subtotal = itemsInCart.reduce(
+    (s, i) => s + (i.price ?? 0) * (i.quantity ?? 1),
+    0,
+  );
   const shipping = subtotal > 0 ? 5000 : 0;
   const total = subtotal + shipping;
 
+  const onCheckout = () => {
+    router.push("/checkout");
+  };
   const renderItem = ({ item }: { item: Item }) => (
     <View style={styles.itemRow}>
-      <View style={styles.itemLeft}>
+      <View>
         {item.image ? (
-          <Image source={{ uri: item.image }} style={styles.thumb} />
+          <Image
+            source={IMAGES[item.image as keyof typeof IMAGES]}
+            style={styles.thumb}
+          />
         ) : (
           <View style={styles.thumbPlaceholder} />
         )}
-        <Text style={styles.itemName}>{item.name}</Text>
       </View>
-      <View style={styles.itemRight}>
-        <View style={styles.qtyRow}>
-          <TouchableOpacity
-            onPress={() =>
-              onQtyChange?.(item.id, Math.max(1, (item.qty ?? 1) - 1))
-            }
-            style={styles.qtyBtn}
-          >
-            <Ionicons name="remove" size={14} color="#fff" />
-          </TouchableOpacity>
-          <Text style={styles.qtyText}>{item.qty ?? 1}</Text>
-          <TouchableOpacity
-            onPress={() => onQtyChange?.(item.id, (item.qty ?? 1) + 1)}
-            style={styles.qtyBtn}
-          >
-            <Ionicons name="add" size={14} color="#fff" />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.priceText}>{formatPrice(item.price ?? 0)}</Text>
+
+      <View style={styles.qtyRow}>
+        <TouchableOpacity
+          onPress={() =>
+            onQtyChange?.(item.id, Math.max(1, (item.quantity ?? 1) - 1))
+          }
+          style={styles.qtyBtn}
+        >
+          <Ionicons name="remove" size={14} color="#fff" />
+        </TouchableOpacity>
+        <Text style={styles.qtyText}>{item.quantity ?? 1}</Text>
+        <TouchableOpacity
+          onPress={() => onQtyChange?.(item.id, (item.quantity ?? 1) + 1)}
+          style={styles.qtyBtn}
+        >
+          <Ionicons name="add" size={14} color="#fff" />
+        </TouchableOpacity>
       </View>
+      <Text style={styles.priceText}>
+        {formatPrice((item.price ?? 0) * (item.quantity ?? 1))}
+      </Text>
     </View>
   );
 
@@ -80,13 +89,13 @@ const CartModal = ({
               <View style={styles.header}>
                 <Text style={styles.title}>Cart</Text>
                 <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-                  <Ionicons name="close" size={20} color="#111827" />
+                  <Ionicons name="close" size={20} color="#ffffff" />
                 </TouchableOpacity>
               </View>
 
               <FlatList
-                data={items}
-                keyExtractor={(i) => i.id}
+                data={itemsInCart}
+                keyExtractor={(i) => i.id.toString()}
                 ItemSeparatorComponent={() => <View style={styles.sep} />}
                 renderItem={renderItem}
                 ListEmptyComponent={
@@ -117,7 +126,7 @@ const CartModal = ({
               <TouchableOpacity
                 style={styles.checkout}
                 onPress={() => {
-                  onCheckout?.();
+                  onCheckout();
                   onClose();
                 }}
               >

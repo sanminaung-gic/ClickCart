@@ -1,57 +1,54 @@
-import { Ionicons } from "@expo/vector-icons";
+import { cartContext } from "@/Context/cartContext";
+import { useContext } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const NOTIFICATIONS = [
-  {
-    id: "1",
-    title: "Order Confirmed",
-    description: "Your order #12345 has been confirmed.",
-    time: "2h ago",
-    unread: true,
-  },
-  {
-    id: "2",
-    title: "Payment Successful",
-    description: "Payment for your order was successful.",
-    time: "1 day ago",
-    unread: false,
-  },
-  {
-    id: "3",
-    title: "New Offer 🎉",
-    description: "Get 20% off on electronics today!",
-    time: "2 days ago",
-    unread: false,
-  },
-];
-
 export default function NotificationsScreen() {
+  const cart = useContext(cartContext);
+
+  const NOTIFICATIONS = cart.notifications;
+  console.log(NOTIFICATIONS);
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Notifications</Text>
 
       <FlatList
         data={NOTIFICATIONS}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => String(item.id)}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <View style={[styles.item, item.unread && styles.unreadItem]}>
-            <View style={styles.icon}>
+        renderItem={({ item }) => {
+          const date = new Date(item.date);
+          const format = date.toLocaleString();
+          return (
+            <View style={[styles.item, !item.isRead && styles.unreadItem]}>
+              {/* <View style={styles.icon}>
               <Ionicons
                 name="notifications-outline"
                 size={22}
                 color="#2563EB"
               />
-            </View>
+            </View> */}
 
-            <View style={{ flex: 1 }}>
-              <Text style={styles.itemTitle}>{item.title}</Text>
-              <Text style={styles.itemDesc}>{item.description}</Text>
-              <Text style={styles.time}>{item.time}</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.itemTitle}>{item.title}</Text>
+                <Text style={styles.itemDesc}>{item.description}</Text>
+                <Text style={styles.time}>{format}</Text>
+              </View>
             </View>
+          );
+        }}
+        ListEmptyComponent={
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "gray", textAlign: "center" }}>
+              No notifications to be shown!
+            </Text>
           </View>
-        )}
+        }
       />
     </SafeAreaView>
   );
@@ -102,5 +99,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#9CA3AF",
     marginTop: 6,
+    textAlign: "right",
   },
 });

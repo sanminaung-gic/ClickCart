@@ -1,15 +1,19 @@
+import CartModal from "@/components/CartModal";
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
   Image,
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const shop = () => {
+  const [cartVisible, setCartVisible] = React.useState(false);
   const PRODUCTS = [
     {
       id: "1",
@@ -63,6 +67,38 @@ const shop = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <View style={styles.header}>
+          <View>
+            <Image
+              source={{
+                uri: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+              }}
+              style={styles.headerImage}
+            />
+          </View>
+
+          <TouchableOpacity
+            style={styles.notification}
+            onPress={() => setCartVisible(!cartVisible)}
+          >
+            <Ionicons name="cart-outline" size={22} color="#111827" />
+          </TouchableOpacity>
+        </View>
+        <CartModal
+          visible={cartVisible}
+          onClose={() => setCartVisible(false)}
+        />
+
+        {/* Search */}
+        <View style={styles.searchBox}>
+          <Ionicons name="search" size={20} color="#9CA3AF" />
+          <TextInput
+            placeholder="Search products"
+            placeholderTextColor="#9CA3AF"
+            style={styles.searchInput}
+          />
+        </View>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>All Products</Text>
           <TouchableOpacity>

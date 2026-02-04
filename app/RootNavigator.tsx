@@ -10,6 +10,7 @@ const RootNavigator = () => {
 
       <Stack.Protected guard={auth.isAuthenticated}>
         <Stack.Screen name="(protected)" options={{ headerShown: false }} />
+        <Stack.Screen name="checkout" options={{ headerShown: false }} />
       </Stack.Protected>
     </Stack>
   );

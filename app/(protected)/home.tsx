@@ -1,3 +1,4 @@
+import Add_to_cart_modal from "@/components/Add_to_cart_modal";
 import CartModal from "@/components/CartModal";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
@@ -11,39 +12,38 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CATEGORIES from "../../DATA/categories.json";
+import { IMAGES } from "../../DATA/images";
+import PRODUCTS from "../../DATA/products.json";
 
-const CATEGORIES = ["All", "Electronics", "Fashion", "Food", "Sports"];
-
-const PRODUCTS = [
-  {
-    id: "1",
-    name: "Wireless Headphone",
-    price: "50000 Ks",
-    image: require("@/assets/images/Earbud01.jpg"),
-  },
-  {
-    id: "2",
-    name: "Shirt",
-    price: "50000 Ks",
-    image: require("@/assets/images/shirt.jpg"),
-  },
-  {
-    id: "3",
-    name: "Shoes",
-    price: "50000 Ks",
-    image: require("@/assets/images/shoe01.jpeg"),
-  },
-  {
-    id: "4",
-    name: "Backpack",
-    price: "50000 Ks",
-    image: require("@/assets/images/Earbud01.jpg"),
-  },
-];
+type Product = {
+  id: number;
+  categoryId: number;
+  brand: string;
+  name: string;
+  price: number;
+  image: string;
+};
 
 export default function HomeScreen() {
   const [cartVisible, setCartVisible] = useState(false);
+  const [bottomSheetVisible, setBottomSheetVisible] = useState<{
+    id: number | null;
+    visible: boolean;
+  }>({
+    id: null,
+    visible: false,
+  });
+  const Products: Product[] = PRODUCTS as Product[];
 
+  const addToCart = (productId: number | null) => {
+    return (
+      <Add_to_cart_modal
+        onClose={() => setBottomSheetVisible({ id: null, visible: false })}
+        productId={productId}
+      />
+    );
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -87,8 +87,8 @@ export default function HomeScreen() {
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {CATEGORIES.map((item) => (
-            <TouchableOpacity key={item} style={styles.categoryChip}>
-              <Text style={styles.categoryText}>{item}</Text>
+            <TouchableOpacity key={item.id} style={styles.categoryChip}>
+              <Text style={styles.categoryText}>{item.title}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -103,14 +103,21 @@ export default function HomeScreen() {
 
         <View style={styles.productGrid}>
           {PRODUCTS.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.productCard}>
-              <Image source={item.image} style={styles.productImage} />
+            <TouchableOpacity
+              key={item.id}
+              style={styles.productCard}
+              onPress={() =>
+                setBottomSheetVisible({ id: item.id, visible: true })
+              }
+            >
+              <Image source={IMAGES[item.image]} style={styles.productImage} />
               <Text style={styles.productName}>{item.name}</Text>
-              <Text style={styles.productPrice}>{item.price}</Text>
+              <Text style={styles.productPrice}>{item.price} Ks</Text>
             </TouchableOpacity>
           ))}
         </View>
       </ScrollView>
+      {bottomSheetVisible.visible && addToCart(bottomSheetVisible.id)}
     </SafeAreaView>
   );
 }

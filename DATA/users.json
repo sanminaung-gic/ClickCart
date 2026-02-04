@@ -1,7 +1,11 @@
 [
   {
+    "id": 1,
     "name": "San Min Aung",
     "email": "sanmin",
-    "password": "sanmin"
+    "password": "sanmin",
+    "phoneNumber": "09770012356",
+    "address": "Yangon",
+    "card": "7734747288349836"
   }
 ]

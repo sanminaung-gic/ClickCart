@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "categoryId": 1,
+    "brand": "Aspor",
+    "name": "Wireless Headphone",
+    "price": 50000,
+    "image": "earbuds",
+    "desc": "High quality wireless headphone with noise cancellation and long battery life. Perfect for music lovers and professionals on the go. Experience immersive sound and comfort all day long."
+  },
+  {
+    "id": 2,
+    "categoryId": 2,
+    "brand": "Zara",
+    "name": "Shirt",
+    "price": 50000,
+    "image": "shirt",
+    "desc": "Comfortable and stylish shirt for everyday wear. Made from high-quality fabric for durability and comfort."
+  },
+  {
+    "id": 3,
+    "categoryId": 4,
+    "brand": "Nike",
+    "name": "Shoes",
+    "price": 50000,
+    "image": "shoes",
+    "desc": "Durable and comfortable shoes designed for all-day wear. Perfect for sports and casual outings."
+  },
+  {
+    "id": 4,
+    "categoryId": 3,
+    "brand": "Generic",
+    "name": "Backpack",
+    "price": 50000,
+    "image": "backpack",
+    "desc": "Spacious and sturdy backpack suitable for school, work, or travel. Features multiple compartments for organized storage."
+  }
+]

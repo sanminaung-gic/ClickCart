@@ -1,8 +1,9 @@
+import { User } from "@/DATA/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useEffect, useState } from "react";
 import DATA from "../DATA/users.json";
-
 type AuthContextType = {
+  currentUser?: User;
   isAuthenticated: boolean;
   login: (
     userName: string,
@@ -20,6 +21,7 @@ export const authContext = createContext<AuthContextType>({
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const STORAGE_KEY = "authUser";
   const [user, setUser] = useState<null | (typeof DATA)[0]>(null);
+  const [currentUser, setCurrentUser] = useState<undefined | User>(undefined);
 
   useEffect(() => {
     const restore = async () => {
@@ -41,6 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     );
     if (found) {
       setUser(found);
+      setCurrentUser(found);
       try {
         await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(found));
       } catch (e) {
@@ -65,7 +68,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = !!user;
 
   return (
-    <authContext.Provider value={{ isAuthenticated, login, logout }}>
+    <authContext.Provider
+      value={{ isAuthenticated, login, logout, currentUser }}
+    >
       {children}
     </authContext.Provider>
   );
