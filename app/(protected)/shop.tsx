@@ -14,56 +14,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const shop = () => {
   const [cartVisible, setCartVisible] = React.useState(false);
-  const PRODUCTS = [
-    {
-      id: "1",
-      name: "Wireless Headphone",
-      price: "50000 Ks",
-      image: require("@/assets/images/Earbud01.jpg"),
-    },
-    {
-      id: "2",
-      name: "Shirt",
-      price: "50000 Ks",
-      image: require("@/assets/images/shirt.jpg"),
-    },
-    {
-      id: "3",
-      name: "Shoes",
-      price: "50000 Ks",
-      image: require("@/assets/images/shoe01.jpeg"),
-    },
-    {
-      id: "4",
-      name: "Backpack",
-      price: "50000 Ks",
-      image: require("@/assets/images/Earbud01.jpg"),
-    },
-    {
-      id: "5",
-      name: "Wireless Headphone",
-      price: "50000 Ks",
-      image: require("@/assets/images/Earbud01.jpg"),
-    },
-    {
-      id: "6",
-      name: "Shirt",
-      price: "50000 Ks",
-      image: require("@/assets/images/shirt.jpg"),
-    },
-    {
-      id: "7",
-      name: "Shoes",
-      price: "50000 Ks",
-      image: require("@/assets/images/shoe01.jpeg"),
-    },
-    {
-      id: "8",
-      name: "Backpack",
-      price: "50000 Ks",
-      image: require("@/assets/images/Earbud01.jpg"),
-    },
-  ];
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -106,7 +56,7 @@ const shop = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.productGrid}>
+        {/* <View style={styles.productGrid}>
           {PRODUCTS.map((item) => (
             <TouchableOpacity key={item.id} style={styles.productCard}>
               <Image source={item.image} style={styles.productImage} />
@@ -114,7 +64,7 @@ const shop = () => {
               <Text style={styles.productPrice}>{item.price}</Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

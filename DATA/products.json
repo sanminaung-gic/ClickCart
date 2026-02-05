@@ -6,33 +6,618 @@
     "name": "Wireless Headphone",
     "price": 50000,
     "image": "earbuds",
-    "desc": "High quality wireless headphone with noise cancellation and long battery life. Perfect for music lovers and professionals on the go. Experience immersive sound and comfort all day long."
+    "desc": "Wireless earbuds with clear stereo sound, long-lasting battery life, and a compact, portable design for everyday use."
   },
   {
     "id": 2,
-    "categoryId": 2,
-    "brand": "Zara",
-    "name": "Shirt",
-    "price": 50000,
-    "image": "shirt",
-    "desc": "Comfortable and stylish shirt for everyday wear. Made from high-quality fabric for durability and comfort."
+    "categoryId": 1,
+    "brand": "SAMSUNG",
+    "name": "Mobile Phone",
+    "price": 900000,
+    "image": "android",
+    "desc": "Latest Android smartphone featuring a high-resolution display, fast processor, and multi-camera setup for all your needs."
   },
   {
     "id": 3,
-    "categoryId": 4,
-    "brand": "Nike",
-    "name": "Shoes",
-    "price": 50000,
-    "image": "shoes",
-    "desc": "Durable and comfortable shoes designed for all-day wear. Perfect for sports and casual outings."
+    "categoryId": 1,
+    "brand": "Apple",
+    "name": "iPhone",
+    "price": 1200000,
+    "image": "apple",
+    "desc": "Sleek Apple iPhone with powerful performance, advanced camera features, and smooth user experience."
   },
   {
     "id": 4,
-    "categoryId": 3,
+    "categoryId": 1,
     "brand": "Generic",
+    "name": "Phone Case",
+    "price": 8000,
+    "image": "phoneCase",
+    "desc": "Durable phone case designed to protect your device from scratches and drops, with a stylish, slim profile."
+  },
+  {
+    "id": 5,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Charger",
+    "price": 5000,
+    "image": "charger",
+    "desc": "Fast-charging wall adapter compatible with smartphones and tablets, compact for travel convenience."
+  },
+  {
+    "id": 6,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Power Bank",
+    "price": 25000,
+    "image": "powerBank",
+    "desc": "High-capacity portable power bank for charging devices on-the-go, lightweight and reliable."
+  },
+  {
+    "id": 7,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Keyboard",
+    "price": 15000,
+    "image": "keyboard",
+    "desc": "Ergonomic keyboard with responsive keys and comfortable typing experience, suitable for work or gaming."
+  },
+  {
+    "id": 8,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Mouse",
+    "price": 10000,
+    "image": "mouse",
+    "desc": "Wireless optical mouse with precision tracking and ergonomic design for long-lasting comfort."
+  },
+  {
+    "id": 9,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Laptop Bag",
+    "price": 30000,
+    "image": "laptopBag",
+    "desc": "Stylish laptop bag with padded compartments to protect laptops and accessories, perfect for commuting."
+  },
+  {
+    "id": 10,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Laptop Stand",
+    "price": 20000,
+    "image": "laptopStand",
+    "desc": "Adjustable laptop stand to improve ergonomics and cooling, lightweight and foldable for easy transport."
+  },
+  {
+    "id": 11,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Speaker",
+    "price": 45000,
+    "image": "speaker",
+    "desc": "Portable Bluetooth speaker delivering powerful sound with deep bass and long battery life for indoor or outdoor use."
+  },
+  {
+    "id": 12,
+    "categoryId": 1,
+    "brand": "Generic",
+    "name": "Projector",
+    "price": 120000,
+    "image": "projector",
+    "desc": "Compact projector for home or office use with high-quality display and easy connectivity."
+  },
+  {
+    "id": 13,
+    "categoryId": 1,
+    "brand": "Sony",
+    "name": "PS5 Controller",
+    "price": 85000,
+    "image": "ps5Contorller",
+    "desc": "Official PS5 wireless controller with ergonomic design, responsive buttons, and immersive gaming experience."
+  },
+  {
+    "id": 14,
+    "categoryId": 2,
+    "brand": "Trendora",
+    "name": "Casual Shirt",
+    "price": 85000,
+    "image": "shirt",
+    "desc": "Comfortable and stylish casual shirt suitable for daily wear or office occasions. Soft fabric and modern design."
+  },
+  {
+    "id": 15,
+    "categoryId": 2,
+    "brand": "StepUp",
+    "name": "Running Shoes",
+    "price": 120000,
+    "image": "shoes",
+    "desc": "Lightweight and durable running shoes designed for comfort and maximum performance during workouts."
+  },
+  {
+    "id": 16,
+    "categoryId": 2,
+    "brand": "PackMate",
     "name": "Backpack",
-    "price": 50000,
+    "price": 95000,
     "image": "backpack",
-    "desc": "Spacious and sturdy backpack suitable for school, work, or travel. Features multiple compartments for organized storage."
+    "desc": "Spacious and stylish backpack with multiple compartments for daily use, travel, or school."
+  },
+  {
+    "id": 17,
+    "categoryId": 2,
+    "brand": "DenimPro",
+    "name": "Blue Jeans",
+    "price": 90000,
+    "image": "jean",
+    "desc": "Classic blue jeans with a comfortable fit. Perfect for casual outings or everyday wear."
+  },
+  {
+    "id": 18,
+    "categoryId": 2,
+    "brand": "UrbanWear",
+    "name": "Formal Trousers",
+    "price": 100000,
+    "image": "trouser",
+    "desc": "Elegant formal trousers suitable for office or semi-formal occasions. Comfortable and sleek design."
+  },
+  {
+    "id": 19,
+    "categoryId": 2,
+    "brand": "CozyThreads",
+    "name": "Hoodie Sweatshirt",
+    "price": 85000,
+    "image": "hoddie",
+    "desc": "Warm and cozy hoodie with a modern design. Ideal for casual wear or outdoor activities."
+  },
+  {
+    "id": 20,
+    "categoryId": 2,
+    "brand": "TradStyle",
+    "name": "Men's Pasoe",
+    "price": 80000,
+    "image": "pasoe",
+    "desc": "Traditional Pasoe with soft, comfortable fabric. Perfect for cultural events or daily wear."
+  },
+  {
+    "id": 21,
+    "categoryId": 2,
+    "brand": "FemmeFit",
+    "name": "Women's Skirt",
+    "price": 75000,
+    "image": "skirt",
+    "desc": "Elegant skirt designed for comfort and style. Suitable for casual outings or semi-formal events."
+  },
+  {
+    "id": 22,
+    "categoryId": 2,
+    "brand": "StepHigh",
+    "name": "High Heels",
+    "price": 130000,
+    "image": "heel",
+    "desc": "Stylish high heels designed for elegance and comfort. Perfect for parties and special occasions."
+  },
+  {
+    "id": 23,
+    "categoryId": 2,
+    "brand": "EasyWalk",
+    "name": "Casual Sandals",
+    "price": 70000,
+    "image": "sandal",
+    "desc": "Comfortable and lightweight sandals for daily wear or casual outings. Durable sole and stylish look."
+  },
+  {
+    "id": 24,
+    "categoryId": 2,
+    "brand": "BuckleUp",
+    "name": "Leather Belt",
+    "price": 50000,
+    "image": "belt",
+    "desc": "Classic leather belt with sturdy buckle. Perfect to complement formal or casual outfits."
+  },
+  {
+    "id": 25,
+    "categoryId": 2,
+    "brand": "SunShade",
+    "name": "Baseball Cap",
+    "price": 45000,
+    "image": "cap",
+    "desc": "Casual baseball cap designed for sun protection and style. Adjustable strap for perfect fit."
+  },
+  {
+    "id": 26,
+    "categoryId": 2,
+    "brand": "VisionPro",
+    "name": "Sunglasses",
+    "price": 90000,
+    "image": "sunglasses",
+    "desc": "Trendy sunglasses with UV protection. Stylish design suitable for everyday wear or outdoor activities."
+  },
+  {
+    "id": 27,
+    "categoryId": 3,
+    "brand": "SnackKing",
+    "name": "Potato Chips",
+    "price": 3500,
+    "image": "potatoChip",
+    "desc": "Crispy and salty potato chips, perfect for snacking anytime. Convenient pack for on-the-go munching."
+  },
+  {
+    "id": 28,
+    "categoryId": 3,
+    "brand": "Pringle",
+    "name": "Pringle Chips",
+    "price": 4500,
+    "image": "prinkle",
+    "desc": "Stackable potato crisps in a convenient can. Rich flavor and crispy texture for snack lovers."
+  },
+  {
+    "id": 29,
+    "categoryId": 3,
+    "brand": "CookieLand",
+    "name": "Chocolate Cookie",
+    "price": 4000,
+    "image": "cookie",
+    "desc": "Delicious chocolate cookies, soft on the inside with a slightly crunchy texture outside. Perfect with tea or coffee."
+  },
+  {
+    "id": 30,
+    "categoryId": 3,
+    "brand": "NoodleX",
+    "name": "Instant Noodle",
+    "price": 3000,
+    "image": "instantNoodle",
+    "desc": "Quick and easy instant noodles, flavorful and convenient for lunch or a late-night snack."
+  },
+  {
+    "id": 31,
+    "categoryId": 3,
+    "brand": "SeaFresh",
+    "name": "Canned Fish",
+    "price": 5000,
+    "image": "cannedFish",
+    "desc": "High-quality canned fish, rich in protein. Perfect for quick meals or sandwiches."
+  },
+  {
+    "id": 32,
+    "categoryId": 3,
+    "brand": "BakeHouse",
+    "name": "Bun",
+    "price": 2500,
+    "image": "bun",
+    "desc": "Soft and fluffy bun, perfect for breakfast or as a snack. Freshly baked with a golden crust."
+  },
+  {
+    "id": 33,
+    "categoryId": 3,
+    "brand": "MuffinTime",
+    "name": "Muffin",
+    "price": 3000,
+    "image": "muffin",
+    "desc": "Sweet and moist muffin, ideal for breakfast or tea time. Delicious flavors in every bite."
+  },
+  {
+    "id": 34,
+    "categoryId": 3,
+    "brand": "JuiceBox",
+    "name": "Juice Box",
+    "price": 1500,
+    "image": "juiceBox",
+    "desc": "Refreshing juice box for kids and adults. Convenient single-serve packaging for anytime hydration."
+  },
+  {
+    "id": 35,
+    "categoryId": 3,
+    "brand": "PowerBoost",
+    "name": "Energy Drink",
+    "price": 2500,
+    "image": "energyDrink",
+    "desc": "Invigorating energy drink to keep you active and alert. Perfect for workouts or a quick energy boost."
+  },
+  {
+    "id": 36,
+    "categoryId": 4,
+    "brand": "GoalMaster",
+    "name": "Football",
+    "price": 45000,
+    "image": "football",
+    "desc": "High-quality football designed for durability and optimal performance on all types of fields. Perfect for training and matches."
+  },
+  {
+    "id": 37,
+    "categoryId": 4,
+    "brand": "AceSport",
+    "name": "Tennis Ball",
+    "price": 5000,
+    "image": "tennisBall",
+    "desc": "Professional-grade tennis ball with consistent bounce and durability. Ideal for practice and matches."
+  },
+  {
+    "id": 38,
+    "categoryId": 4,
+    "brand": "SmashPro",
+    "name": "Badminton Racket",
+    "price": 60000,
+    "image": "badmintonRacket",
+    "desc": "Lightweight badminton racket with excellent control and power, perfect for both beginners and pros."
+  },
+  {
+    "id": 39,
+    "categoryId": 4,
+    "brand": "TopSpin",
+    "name": "Tennis Racket",
+    "price": 95000,
+    "image": "tennisRacket",
+    "desc": "Durable tennis racket designed for accuracy and power. Ideal for competitive and recreational players."
+  },
+  {
+    "id": 40,
+    "categoryId": 4,
+    "brand": "KickMaster",
+    "name": "Football Boot",
+    "price": 120000,
+    "image": "footballBoot",
+    "desc": "Ergonomic football boots with excellent grip and comfort. Perfect for all types of playing surfaces."
+  },
+  {
+    "id": 41,
+    "categoryId": 4,
+    "brand": "TeamWear",
+    "name": "Jersey",
+    "price": 70000,
+    "image": "jersey",
+    "desc": "Breathable sports jersey with a modern fit. Ideal for training, matches, and team events."
+  },
+  {
+    "id": 42,
+    "categoryId": 4,
+    "brand": "Athleisure",
+    "name": "Track Suit",
+    "price": 90000,
+    "image": "trackSuit",
+    "desc": "Comfortable and stylish tracksuit suitable for workouts, jogging, or casual sports activities."
+  },
+  {
+    "id": 43,
+    "categoryId": 4,
+    "brand": "ComfortFit",
+    "name": "Sports Socks",
+    "price": 12000,
+    "image": "sock",
+    "desc": "Breathable and cushioned sports socks designed for comfort during workouts and games."
+  },
+  {
+    "id": 44,
+    "categoryId": 4,
+    "brand": "GuardPro",
+    "name": "Knee Pad",
+    "price": 15000,
+    "image": "kneePad",
+    "desc": "Durable knee pad providing excellent protection and support during sports activities."
+  },
+  {
+    "id": 45,
+    "categoryId": 4,
+    "brand": "GuardPro",
+    "name": "Elbow Pad",
+    "price": 15000,
+    "image": "elbowPad",
+    "desc": "High-quality elbow pad designed for comfort and protection during sports and workouts."
+  },
+  {
+    "id": 46,
+    "categoryId": 5,
+    "brand": "CleanPro",
+    "name": "Toilet Cleaner",
+    "price": 7500,
+    "image": "toiletCleaner",
+    "desc": "Effective toilet cleaner for deep cleaning and removing tough stains. Keeps your bathroom fresh and hygienic."
+  },
+  {
+    "id": 47,
+    "categoryId": 5,
+    "brand": "SoftScrub",
+    "name": "Sponges",
+    "price": 3000,
+    "image": "sponges",
+    "desc": "Durable cleaning sponges suitable for dishes, surfaces, and household cleaning tasks. Soft yet effective."
+  },
+  {
+    "id": 48,
+    "categoryId": 5,
+    "brand": "MopMaster",
+    "name": "Mop",
+    "price": 12000,
+    "image": "mop",
+    "desc": "Sturdy mop for easy floor cleaning. Lightweight design and absorbent head for efficient cleaning."
+  },
+  {
+    "id": 49,
+    "categoryId": 5,
+    "brand": "EcoBag",
+    "name": "Garbage Bag",
+    "price": 4000,
+    "image": "garbageBag",
+    "desc": "Strong and durable garbage bags for home and office use. Leak-resistant and convenient to use."
+  },
+  {
+    "id": 50,
+    "categoryId": 5,
+    "brand": "KitchenWare",
+    "name": "Plate",
+    "price": 5000,
+    "image": "plate",
+    "desc": "Simple and elegant plate, ideal for daily meals. Durable and easy to clean."
+  },
+  {
+    "id": 51,
+    "categoryId": 5,
+    "brand": "KitchenWare",
+    "name": "Bowl",
+    "price": 4500,
+    "image": "bowl",
+    "desc": "Versatile bowl suitable for soups, cereals, or snacks. Durable and dishwasher-safe."
+  },
+  {
+    "id": 52,
+    "categoryId": 5,
+    "brand": "KitchenWare",
+    "name": "Cup",
+    "price": 3000,
+    "image": "cup",
+    "desc": "Simple cup for tea, coffee, or cold drinks. Durable and lightweight."
+  },
+  {
+    "id": 53,
+    "categoryId": 5,
+    "brand": "KitchenWare",
+    "name": "Mug",
+    "price": 4000,
+    "image": "mug",
+    "desc": "Sturdy mug for hot and cold beverages. Comfortable handle and sleek design."
+  },
+  {
+    "id": 54,
+    "categoryId": 5,
+    "brand": "KitchenWare",
+    "name": "Spoon",
+    "price": 2000,
+    "image": "spoon",
+    "desc": "Durable spoon suitable for daily meals. Smooth finish and comfortable grip."
+  },
+  {
+    "id": 55,
+    "categoryId": 5,
+    "brand": "CookMate",
+    "name": "Pan",
+    "price": 25000,
+    "image": "pan",
+    "desc": "High-quality cooking pan for frying or sautéing. Non-stick surface for easy cooking and cleaning."
+  },
+  {
+    "id": 56,
+    "categoryId": 5,
+    "brand": "CookMate",
+    "name": "Cutting Board",
+    "price": 12000,
+    "image": "cuttingBoard",
+    "desc": "Durable cutting board suitable for vegetables, fruits, and meat. Easy to clean and maintain."
+  },
+  {
+    "id": 57,
+    "categoryId": 5,
+    "brand": "TimeKeep",
+    "name": "Clock",
+    "price": 8000,
+    "image": "clock",
+    "desc": "Stylish wall clock with clear display. Perfect for home or office use."
+  },
+  {
+    "id": 58,
+    "categoryId": 5,
+    "brand": "BrightLight",
+    "name": "Flashlight",
+    "price": 5000,
+    "image": "flashLight",
+    "desc": "Portable and durable flashlight with bright LED light. Ideal for emergencies or outdoor use."
+  },
+  {
+    "id": 59,
+    "categoryId": 6,
+    "brand": "GlamourTouch",
+    "name": "Lipstick",
+    "price": 12000,
+    "image": "lipstick",
+    "desc": "Richly pigmented lipstick for long-lasting color and smooth application. Perfect for all-day wear."
+  },
+  {
+    "id": 60,
+    "categoryId": 6,
+    "brand": "EyeLuxe",
+    "name": "Eyeliner",
+    "price": 10000,
+    "image": "eyeliner",
+    "desc": "Precision eyeliner for bold and defined eyes. Smudge-proof and long-lasting formula."
+  },
+  {
+    "id": 61,
+    "categoryId": 6,
+    "brand": "FreshFace",
+    "name": "Face Wash",
+    "price": 9000,
+    "image": "faceWash",
+    "desc": "Gentle face wash that removes dirt and oil, leaving your skin fresh and clean without dryness."
+  },
+  {
+    "id": 62,
+    "categoryId": 6,
+    "brand": "SunGuard",
+    "name": "Sunscreen",
+    "price": 15000,
+    "image": "sunScream",
+    "desc": "Lightweight sunscreen providing SPF protection against harmful UV rays. Suitable for daily use."
+  },
+  {
+    "id": 63,
+    "categoryId": 6,
+    "brand": "GlowCare",
+    "name": "Face Mask",
+    "price": 12000,
+    "image": "faceMask",
+    "desc": "Nourishing face mask that revitalizes and hydrates your skin. Ideal for weekly skincare routine."
+  },
+  {
+    "id": 64,
+    "categoryId": 6,
+    "brand": "FreshGlow",
+    "name": "Scrub",
+    "price": 10000,
+    "image": "scrub",
+    "desc": "Exfoliating scrub to remove dead skin cells and impurities. Leaves skin soft and smooth."
+  },
+  {
+    "id": 65,
+    "categoryId": 6,
+    "brand": "HairCare",
+    "name": "Shampoo",
+    "price": 13000,
+    "image": "shampoo",
+    "desc": "Nourishing shampoo that cleanses hair and scalp while maintaining natural shine and softness."
+  },
+  {
+    "id": 66,
+    "categoryId": 6,
+    "brand": "NatureOil",
+    "name": "Hair Oil",
+    "price": 12000,
+    "image": "hairOil",
+    "desc": "Lightweight hair oil to nourish and strengthen hair, promoting healthy growth and shine."
+  },
+  {
+    "id": 67,
+    "categoryId": 6,
+    "brand": "StyleFix",
+    "name": "Hair Spray",
+    "price": 11000,
+    "image": "hairSpray",
+    "desc": "Strong-hold hair spray to style and maintain your hair all day without stiffness."
+  },
+  {
+    "id": 68,
+    "categoryId": 6,
+    "brand": "ScentAura",
+    "name": "Perfume",
+    "price": 20000,
+    "image": "perfume",
+    "desc": "Long-lasting perfume with a refreshing fragrance. Perfect for daily wear or special occasions."
+  },
+  {
+    "id": 69,
+    "categoryId": 6,
+    "brand": "ProBrush",
+    "name": "Makeup Brush",
+    "price": 8000,
+    "image": "makeupBrush",
+    "desc": "High-quality makeup brush set for precise application and flawless makeup finish."
   }
 ]

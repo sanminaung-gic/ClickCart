@@ -1,5 +1,6 @@
 import { authContext } from "@/Context/authContext";
 import { cartContext } from "@/Context/cartContext";
+import { IMAGES } from "@/DATA/images";
 import React, { useContext } from "react";
 import {
   Image,
@@ -22,9 +23,11 @@ export default function ProfileScreen() {
 
         <View style={styles.profileImageContainer}>
           <Image
-            source={{
-              uri: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-            }}
+            source={
+              auth.currentUser
+                ? IMAGES[auth.currentUser.profile_photo]
+                : IMAGES["default"]
+            }
             style={styles.profileImage}
           />
         </View>

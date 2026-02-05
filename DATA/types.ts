@@ -15,6 +15,17 @@ type User = {
   phoneNumber: string;
   address: string;
   card: string;
+  profile_photo: string;
+};
+
+type Product = {
+  id: number;
+  categoryId: number;
+  brand: string;
+  name: string;
+  price: number;
+  image: string;
+  desc: string;
 };
 
 type Order = {
@@ -41,4 +52,9 @@ type CartItem = {
   price?: number;
   quantity: number;
 };
-export { CartItem, Notifiaction, Order, User };
+
+type Category = {
+  id: number;
+  title: string;
+};
+export { CartItem, Category, Notifiaction, Order, Product, User };
