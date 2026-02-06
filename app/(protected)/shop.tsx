@@ -1,10 +1,9 @@
 import Add_to_cart_modal from "@/components/Add_to_cart_modal";
 import Header from "@/components/Header";
 import Products from "@/components/Products";
-import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import React, { useCallback, useEffect, useState } from "react";
-import { ScrollView, StyleSheet, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const shop = () => {
@@ -13,6 +12,7 @@ const shop = () => {
 
   const { categoryId } = useLocalSearchParams<{ categoryId?: string }>();
 
+  // remove search value and category select when left the screen
   useFocusEffect(
     useCallback(() => {
       return () => {
@@ -21,17 +21,17 @@ const shop = () => {
       };
     }, []),
   );
+
+  // to set the selected category
   useEffect(() => {
     if (categoryId) {
       setId(Number(categoryId));
     }
-
     return () => {
       setId(null);
     };
   }, [categoryId]);
 
-  console.log;
   const [bottomSheetVisible, setBottomSheetVisible] = useState<{
     id: number | null;
     visible: boolean;
@@ -48,20 +48,14 @@ const shop = () => {
       />
     );
   };
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Header />
-        <View style={styles.searchBox}>
-          <Ionicons name="search" size={20} color="#9CA3AF" />
-          <TextInput
-            value={searchText}
-            onChangeText={setSearchText}
-            placeholder="Search products"
-            placeholderTextColor="#9CA3AF"
-            style={styles.searchInput}
-          />
-        </View>
+      <Header searchText={searchText} setSearchText={setSearchText} />
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         {categoryId ? (
           <Products
             searchText={searchText}
@@ -87,6 +81,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
+  },
+  scrollView: {
+    marginTop: 60,
   },
   header: {
     flexDirection: "row",

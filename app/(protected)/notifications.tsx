@@ -4,14 +4,13 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function NotificationsScreen() {
+  // call cart context for cart related information
   const cart = useContext(cartContext);
-
   const NOTIFICATIONS = cart.notifications;
-  console.log(NOTIFICATIONS);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Notifications</Text>
-
       <FlatList
         data={NOTIFICATIONS}
         keyExtractor={(item) => String(item.id)}
@@ -21,14 +20,6 @@ export default function NotificationsScreen() {
           const format = date.toLocaleString();
           return (
             <View style={[styles.item, !item.isRead && styles.unreadItem]}>
-              {/* <View style={styles.icon}>
-              <Ionicons
-                name="notifications-outline"
-                size={22}
-                color="#2563EB"
-              />
-            </View> */}
-
               <View style={{ flex: 1 }}>
                 <Text style={styles.itemTitle}>{item.title}</Text>
                 <Text style={styles.itemDesc}>{item.description}</Text>
@@ -54,6 +45,7 @@ export default function NotificationsScreen() {
   );
 }
 
+// styling for this screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,

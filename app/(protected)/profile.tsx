@@ -16,11 +16,11 @@ export default function ProfileScreen() {
   const cart = useContext(cartContext);
   const auth = useContext(authContext);
   const orders = cart.orders;
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         <Text style={styles.title}>Profile</Text>
-
         <View style={styles.profileImageContainer}>
           <Image
             source={
@@ -31,7 +31,6 @@ export default function ProfileScreen() {
             style={styles.profileImage}
           />
         </View>
-
         <View style={styles.infoContainer}>
           <View style={styles.infoRow}>
             <Text style={styles.label}>Name</Text>
@@ -65,6 +64,7 @@ export default function ProfileScreen() {
         </View>
 
         {orders.length > 0 && <Text style={styles.orderTitle}>Order list</Text>}
+
         {orders.map((order) => {
           const date = new Date(order.date);
           const format = date.toLocaleString();
@@ -101,6 +101,7 @@ export default function ProfileScreen() {
   );
 }
 
+// styling for this screen
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   title: { fontSize: 24, fontWeight: "bold", marginTop: 20, marginLeft: 20 },

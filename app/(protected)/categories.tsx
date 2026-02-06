@@ -12,12 +12,15 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function CategoriesScreen() {
+  // this call the shop context
   const shop = useContext(shopContext);
+
+  // retrieve all categories from shop context
   const CATEGORIES = shop.categories;
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Categories</Text>
-
       <FlatList
         data={CATEGORIES}
         numColumns={2}
@@ -47,6 +50,7 @@ export default function CategoriesScreen() {
   );
 }
 
+//styling for this screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,

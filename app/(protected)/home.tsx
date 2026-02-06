@@ -3,32 +3,29 @@ import Header from "@/components/Header";
 import Products from "@/components/Products";
 import { authContext } from "@/Context/authContext";
 import { shopContext } from "@/Context/shopContext";
-import { Ionicons } from "@expo/vector-icons";
 import { router, useFocusEffect } from "expo-router";
 import { useCallback, useContext, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Product = {
-  id: number;
-  categoryId: number;
-  brand: string;
-  name: string;
-  price: number;
-  image: string;
-};
-
 export default function HomeScreen() {
+  // auth context call for authentication functions and data
   const auth = useContext(authContext);
+
+  // shop context call for all shop related data and functions
   const shop = useContext(shopContext);
+  const CATEGORIES = shop.categories;
+
+  // search variable
   const [searchText, setSearchText] = useState("");
+
+  // to remove the search value when left the screen
   useFocusEffect(
     useCallback(() => {
       return () => {
@@ -37,7 +34,7 @@ export default function HomeScreen() {
     }, []),
   );
 
-  const CATEGORIES = shop.categories;
+  // for bootom sheet ( add to cart modal )
   const [bottomSheetVisible, setBottomSheetVisible] = useState<{
     id: number | null;
     visible: boolean;
@@ -46,6 +43,7 @@ export default function HomeScreen() {
     visible: false,
   });
 
+  // add to cart function to pop up the modal
   const addToCart = (productId: number | null) => {
     return (
       <Add_to_cart_modal
@@ -54,22 +52,14 @@ export default function HomeScreen() {
       />
     );
   };
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Header />
-
-        <View style={styles.searchBox}>
-          <Ionicons name="search" size={20} color="#9CA3AF" />
-          <TextInput
-            value={searchText}
-            onChangeText={setSearchText}
-            placeholder="Search products"
-            placeholderTextColor="#9CA3AF"
-            style={styles.searchInput}
-          />
-        </View>
-
+      <Header searchText={searchText} setSearchText={setSearchText} />
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Categories</Text>
           <TouchableOpacity
@@ -78,7 +68,11 @@ export default function HomeScreen() {
             <Text style={styles.seeAll}>See all categories</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView
+          style={{ paddingBottom: 20 }}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
           {CATEGORIES.map((item) => (
             <TouchableOpacity
               key={item.id}
@@ -107,11 +101,15 @@ export default function HomeScreen() {
   );
 }
 
+// styling for this screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
+  },
+  scrollView: {
+    marginTop: 60,
   },
   locationLabel: {
     fontSize: 13,
@@ -139,7 +137,6 @@ const styles = StyleSheet.create({
     color: "#111827",
   },
   sectionHeader: {
-    marginTop: 26,
     marginBottom: 14,
     flexDirection: "row",
     justifyContent: "space-between",

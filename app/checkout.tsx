@@ -21,6 +21,7 @@ export default function CheckoutScreen() {
   const itemsInCart = Cart.items;
   const [loading, setLoading] = useState(false);
 
+  // checkout function
   const checkout = () => {
     console.log(loading);
     setLoading(true);
@@ -31,24 +32,25 @@ export default function CheckoutScreen() {
     }, 1000);
   };
 
+  // to hide card number and show 4 last digits
   const maskCardNumber = (cardNumber: string | any) => {
     const visibleDigits = 4;
     const maskedLength = cardNumber.length - visibleDigits;
-
     const masked = "*".repeat(maskedLength).replace(/(.{4})/g, "$1 ");
     const last4 = cardNumber.slice(-4);
-
     return masked + last4;
   };
 
   const card = maskCardNumber(auth.currentUser?.card);
 
+  // calculation for items and shipping
   const subTotal = itemsInCart.reduce(
     (total, item) => total + (item.price ?? 0) * (item.quantity ?? 1),
     0,
   );
   const shipping = subTotal > 0 ? 5000 : 0;
   const total = subTotal + shipping;
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -58,7 +60,6 @@ export default function CheckoutScreen() {
         <Text style={styles.headerTitle}>Checkout</Text>
         <View style={{ width: 24 }} />
       </View>
-
       <ScrollView contentContainerStyle={styles.content}>
         <Row
           label="SHIPPING"
@@ -70,7 +71,6 @@ export default function CheckoutScreen() {
         />
         <Row label="PAYMENT" value={card} />
         <Row label="DELIVERY" value="Free Standard | 3 - 4 days" />
-
         <View style={styles.itemsHeader}>
           <Text style={styles.itemsTitle}>ITEMS</Text>
           <Text style={styles.descTitle}>DESCRIPTION</Text>
@@ -116,6 +116,7 @@ export default function CheckoutScreen() {
   );
 }
 
+// row component for each item
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <TouchableOpacity style={styles.row}>
@@ -128,6 +129,7 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
+// items
 function Item({ image, brand, name, desc, qty, price }: any) {
   return (
     <View style={styles.item}>
@@ -145,6 +147,7 @@ function Item({ image, brand, name, desc, qty, price }: any) {
   );
 }
 
+// calculation row
 function SummaryRow({
   label,
   value,
@@ -167,7 +170,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF",
   },
-
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -181,12 +183,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "600",
   },
-
   content: {
     paddingHorizontal: 16,
     paddingBottom: 120,
   },
-
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -212,7 +212,6 @@ const styles = StyleSheet.create({
     color: "#111827",
     textAlign: "right",
   },
-
   itemsHeader: {
     flexDirection: "row",
     marginTop: 24,
@@ -235,7 +234,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#6B7280",
   },
-
   item: {
     flexDirection: "row",
     marginBottom: 20,
@@ -271,7 +269,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
   },
-
   summary: {
     marginTop: 24,
     borderTopWidth: 1,
@@ -294,7 +291,6 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: "700",
   },
-
   footer: {
     position: "absolute",
     bottom: 0,

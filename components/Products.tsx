@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     color: "gray",
   },
   sectionHeader: {
-    marginTop: 26,
     marginBottom: 14,
     flexDirection: "row",
     justifyContent: "space-between",
