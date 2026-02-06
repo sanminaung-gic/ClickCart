@@ -9,6 +9,8 @@ export const cartContext = createContext<{
   removeItem: (id: number) => void;
   clearCart: () => void;
   placeOrder: () => void;
+  increase: (itemId: number) => void;
+  decrease: (itemId: number) => void;
 }>({
   orders: [],
   items: [],
@@ -17,6 +19,8 @@ export const cartContext = createContext<{
   removeItem: () => {},
   clearCart: () => {},
   placeOrder: () => {},
+  increase: (_itemId: number) => {},
+  decrease: (_itemId: number) => {},
 });
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
@@ -37,6 +41,24 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         return [...prevItems, { ...item }];
       }
     });
+  };
+
+  const increase = (itemId: number) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    );
+  };
+
+  const decrease = (itemId: number) => {
+    setItems((prev) =>
+      prev
+        .map((item) =>
+          item.id === itemId ? { ...item, quantity: item.quantity - 1 } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
   };
 
   const removeItem = (id: number) => {
@@ -121,6 +143,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         orders,
         placeOrder,
         notifications,
+        increase,
+        decrease,
       }}
     >
       {children}

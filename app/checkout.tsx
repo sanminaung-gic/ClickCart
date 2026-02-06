@@ -42,6 +42,13 @@ export default function CheckoutScreen() {
   };
 
   const card = maskCardNumber(auth.currentUser?.card);
+
+  const subTotal = itemsInCart.reduce(
+    (total, item) => total + (item.price ?? 0) * (item.quantity ?? 1),
+    0,
+  );
+  const shipping = subTotal > 0 ? 5000 : 0;
+  const total = subTotal + shipping;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -85,27 +92,10 @@ export default function CheckoutScreen() {
         <View style={styles.summary}>
           <SummaryRow
             label={`Subtotal (${itemsInCart.length})`}
-            value={
-              itemsInCart.reduce(
-                (total, item) =>
-                  total + (item.price ?? 0) * (item.quantity ?? 1),
-                0,
-              ) + " Ks"
-            }
+            value={subTotal + " Ks"}
           />
-          <SummaryRow label="Shipping total" value="Free" />
-          <SummaryRow label="Taxes" value="included" />
-          <SummaryRow
-            label="Total"
-            value={
-              itemsInCart.reduce(
-                (total, item) =>
-                  total + (item.price ?? 0) * (item.quantity ?? 1),
-                0,
-              ) + " Ks"
-            }
-            bold={true}
-          />
+          <SummaryRow label="Shipping total" value={shipping + "Ks"} />
+          <SummaryRow label="Total" value={total + " Ks"} bold={true} />
         </View>
       </ScrollView>
 

@@ -1,8 +1,8 @@
 [
-  { "id": 1, "title": "Electronics" },
-  { "id": 2, "title": "Fashion" },
-  { "id": 3, "title": "Food" },
-  { "id": 4, "title": "Sports" },
-  { "id": 5, "title": "Home" },
-  { "id": 6, "title": "Beauty" }
+  { "id": 1, "title": "Electronics", "icon": "phone-portrait-outline" },
+  { "id": 2, "title": "Fashion", "icon": "shirt-outline" },
+  { "id": 3, "title": "Food", "icon": "fast-food-outline" },
+  { "id": 4, "title": "Sports", "icon": "football-outline" },
+  { "id": 5, "title": "Home", "icon": "home-outline" },
+  { "id": 6, "title": "Beauty", "icon": "sparkles-outline" }
 ]

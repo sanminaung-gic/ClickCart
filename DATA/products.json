@@ -51,7 +51,8 @@
     "name": "Power Bank",
     "price": 25000,
     "image": "powerBank",
-    "desc": "High-capacity portable power bank for charging devices on-the-go, lightweight and reliable."
+    "desc": "High-capacity portable power bank for charging devices on-the-go, lightweight and reliable.",
+    "popular": true
   },
   {
     "id": 7,
@@ -60,7 +61,8 @@
     "name": "Keyboard",
     "price": 15000,
     "image": "keyboard",
-    "desc": "Ergonomic keyboard with responsive keys and comfortable typing experience, suitable for work or gaming."
+    "desc": "Ergonomic keyboard with responsive keys and comfortable typing experience, suitable for work or gaming.",
+    "popular": true
   },
   {
     "id": 8,
@@ -87,7 +89,8 @@
     "name": "Laptop Stand",
     "price": 20000,
     "image": "laptopStand",
-    "desc": "Adjustable laptop stand to improve ergonomics and cooling, lightweight and foldable for easy transport."
+    "desc": "Adjustable laptop stand to improve ergonomics and cooling, lightweight and foldable for easy transport.",
+    "popular": true
   },
   {
     "id": 11,
@@ -96,7 +99,8 @@
     "name": "Speaker",
     "price": 45000,
     "image": "speaker",
-    "desc": "Portable Bluetooth speaker delivering powerful sound with deep bass and long battery life for indoor or outdoor use."
+    "desc": "Portable Bluetooth speaker delivering powerful sound with deep bass and long battery life for indoor or outdoor use.",
+    "popular": true
   },
   {
     "id": 12,
@@ -105,7 +109,8 @@
     "name": "Projector",
     "price": 120000,
     "image": "projector",
-    "desc": "Compact projector for home or office use with high-quality display and easy connectivity."
+    "desc": "Compact projector for home or office use with high-quality display and easy connectivity.",
+    "popular": true
   },
   {
     "id": 13,
@@ -114,7 +119,8 @@
     "name": "PS5 Controller",
     "price": 85000,
     "image": "ps5Contorller",
-    "desc": "Official PS5 wireless controller with ergonomic design, responsive buttons, and immersive gaming experience."
+    "desc": "Official PS5 wireless controller with ergonomic design, responsive buttons, and immersive gaming experience.",
+    "popular": true
   },
   {
     "id": 14,
@@ -123,7 +129,8 @@
     "name": "Casual Shirt",
     "price": 85000,
     "image": "shirt",
-    "desc": "Comfortable and stylish casual shirt suitable for daily wear or office occasions. Soft fabric and modern design."
+    "desc": "Comfortable and stylish casual shirt suitable for daily wear or office occasions. Soft fabric and modern design.",
+    "popular": true
   },
   {
     "id": 15,
@@ -141,7 +148,8 @@
     "name": "Backpack",
     "price": 95000,
     "image": "backpack",
-    "desc": "Spacious and stylish backpack with multiple compartments for daily use, travel, or school."
+    "desc": "Spacious and stylish backpack with multiple compartments for daily use, travel, or school.",
+    "popular": true
   },
   {
     "id": 17,
@@ -159,7 +167,8 @@
     "name": "Formal Trousers",
     "price": 100000,
     "image": "trouser",
-    "desc": "Elegant formal trousers suitable for office or semi-formal occasions. Comfortable and sleek design."
+    "desc": "Elegant formal trousers suitable for office or semi-formal occasions. Comfortable and sleek design.",
+    "popular": true
   },
   {
     "id": 19,
@@ -168,7 +177,8 @@
     "name": "Hoodie Sweatshirt",
     "price": 85000,
     "image": "hoddie",
-    "desc": "Warm and cozy hoodie with a modern design. Ideal for casual wear or outdoor activities."
+    "desc": "Warm and cozy hoodie with a modern design. Ideal for casual wear or outdoor activities.",
+    "popular": true
   },
   {
     "id": 20,
@@ -183,10 +193,11 @@
     "id": 21,
     "categoryId": 2,
     "brand": "FemmeFit",
-    "name": "Women's Skirt",
+    "name": "Skirt",
     "price": 75000,
     "image": "skirt",
-    "desc": "Elegant skirt designed for comfort and style. Suitable for casual outings or semi-formal events."
+    "desc": "Elegant skirt designed for comfort and style. Suitable for casual outings or semi-formal events.",
+    "popular": true
   },
   {
     "id": 22,
@@ -195,7 +206,8 @@
     "name": "High Heels",
     "price": 130000,
     "image": "heel",
-    "desc": "Stylish high heels designed for elegance and comfort. Perfect for parties and special occasions."
+    "desc": "Stylish high heels designed for elegance and comfort. Perfect for parties and special occasions.",
+    "popular": true
   },
   {
     "id": 23,
@@ -204,7 +216,8 @@
     "name": "Casual Sandals",
     "price": 70000,
     "image": "sandal",
-    "desc": "Comfortable and lightweight sandals for daily wear or casual outings. Durable sole and stylish look."
+    "desc": "Comfortable and lightweight sandals for daily wear or casual outings. Durable sole and stylish look.",
+    "popular": true
   },
   {
     "id": 24,
@@ -222,7 +235,8 @@
     "name": "Baseball Cap",
     "price": 45000,
     "image": "cap",
-    "desc": "Casual baseball cap designed for sun protection and style. Adjustable strap for perfect fit."
+    "desc": "Casual baseball cap designed for sun protection and style. Adjustable strap for perfect fit.",
+    "popular": true
   },
   {
     "id": 26,
@@ -231,7 +245,8 @@
     "name": "Sunglasses",
     "price": 90000,
     "image": "sunglasses",
-    "desc": "Trendy sunglasses with UV protection. Stylish design suitable for everyday wear or outdoor activities."
+    "desc": "Trendy sunglasses with UV protection. Stylish design suitable for everyday wear or outdoor activities.",
+    "popular": true
   },
   {
     "id": 27,

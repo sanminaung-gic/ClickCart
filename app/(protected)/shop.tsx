@@ -1,71 +1,81 @@
-import CartModal from "@/components/CartModal";
+import Add_to_cart_modal from "@/components/Add_to_cart_modal";
+import Header from "@/components/Header";
+import Products from "@/components/Products";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { useFocusEffect, useLocalSearchParams } from "expo-router";
+import React, { useCallback, useEffect, useState } from "react";
+import { ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const shop = () => {
-  const [cartVisible, setCartVisible] = React.useState(false);
+  const [id, setId] = useState<number | null>(null);
+  const [searchText, setSearchText] = useState("");
+
+  const { categoryId } = useLocalSearchParams<{ categoryId?: string }>();
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setId(null);
+        setSearchText("");
+      };
+    }, []),
+  );
+  useEffect(() => {
+    if (categoryId) {
+      setId(Number(categoryId));
+    }
+
+    return () => {
+      setId(null);
+    };
+  }, [categoryId]);
+
+  console.log;
+  const [bottomSheetVisible, setBottomSheetVisible] = useState<{
+    id: number | null;
+    visible: boolean;
+  }>({
+    id: null,
+    visible: false,
+  });
+
+  const addToCart = (productId: number | null) => {
+    return (
+      <Add_to_cart_modal
+        onClose={() => setBottomSheetVisible({ id: null, visible: false })}
+        productId={productId}
+      />
+    );
+  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View>
-            <Image
-              source={{
-                uri: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-              }}
-              style={styles.headerImage}
-            />
-          </View>
-
-          <TouchableOpacity
-            style={styles.notification}
-            onPress={() => setCartVisible(!cartVisible)}
-          >
-            <Ionicons name="cart-outline" size={22} color="#111827" />
-          </TouchableOpacity>
-        </View>
-        <CartModal
-          visible={cartVisible}
-          onClose={() => setCartVisible(false)}
-        />
-
-        {/* Search */}
+        <Header />
         <View style={styles.searchBox}>
           <Ionicons name="search" size={20} color="#9CA3AF" />
           <TextInput
+            value={searchText}
+            onChangeText={setSearchText}
             placeholder="Search products"
             placeholderTextColor="#9CA3AF"
             style={styles.searchInput}
           />
         </View>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>All Products</Text>
-          <TouchableOpacity>
-            <Text style={styles.seeAll}>See all</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* <View style={styles.productGrid}>
-          {PRODUCTS.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.productCard}>
-              <Image source={item.image} style={styles.productImage} />
-              <Text style={styles.productName}>{item.name}</Text>
-              <Text style={styles.productPrice}>{item.price}</Text>
-            </TouchableOpacity>
-          ))}
-        </View> */}
+        {categoryId ? (
+          <Products
+            searchText={searchText}
+            categoryId={Number(id)}
+            setBottomSheetVisible={setBottomSheetVisible}
+          />
+        ) : (
+          <Products
+            searchText={searchText}
+            setBottomSheetVisible={setBottomSheetVisible}
+          />
+        )}
       </ScrollView>
+      {bottomSheetVisible.visible && addToCart(bottomSheetVisible.id)}
     </SafeAreaView>
   );
 };

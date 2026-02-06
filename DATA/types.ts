@@ -26,6 +26,7 @@ type Product = {
   price: number;
   image: string;
   desc: string;
+  popular?: boolean;
 };
 
 type Order = {
@@ -56,5 +57,6 @@ type CartItem = {
 type Category = {
   id: number;
   title: string;
+  icon: string;
 };
 export { CartItem, Category, Notifiaction, Order, Product, User };

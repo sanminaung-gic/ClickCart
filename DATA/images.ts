@@ -34,7 +34,7 @@ export const IMAGES: Record<string, any> = {
   prinkle: require("@/assets/images/food/pringle.jpg"),
   cookie: require("@/assets/images/food/cookie.jpg"),
   instantNoodle: require("@/assets/images/food/instantNoddle.jpg"),
-  cannedFish: require("@/assets/images/food/cannedFish.avif"),
+  cannedFish: require("@/assets/images/food/cannedFish.jpg"),
   bun: require("@/assets/images/food/bun.jpg"),
   muffin: require("@/assets/images/food/muffin.webp"),
   juiceBox: require("@/assets/images/food/juice.jpg"),
@@ -81,6 +81,6 @@ export const IMAGES: Record<string, any> = {
   makeupBrush: require("@/assets/images/beauty/makeupBrush.jpg"),
 
   //profiles
-  minato: require("@/assets/profile_photos/minato.webp"),
-  default: require("@/assets/profile_photos/default.png"),
+  minato: require("@/assets/images/profile_photos/minato.webp"),
+  default: require("@/assets/images/profile_photos/default.png"),
 };

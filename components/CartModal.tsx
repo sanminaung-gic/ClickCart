@@ -59,16 +59,14 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
 
       <View style={styles.qtyRow}>
         <TouchableOpacity
-          onPress={() =>
-            onQtyChange?.(item.id, Math.max(1, (item.quantity ?? 1) - 1))
-          }
+          onPress={() => cart.decrease(item.id)}
           style={styles.qtyBtn}
         >
           <Ionicons name="remove" size={14} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.qtyText}>{item.quantity ?? 1}</Text>
         <TouchableOpacity
-          onPress={() => onQtyChange?.(item.id, (item.quantity ?? 1) + 1)}
+          onPress={() => cart.increase(item.id)}
           style={styles.qtyBtn}
         >
           <Ionicons name="add" size={14} color="#fff" />
@@ -124,6 +122,7 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
               </View>
 
               <TouchableOpacity
+                disabled={itemsInCart.length === 0}
                 style={styles.checkout}
                 onPress={() => {
                   onCheckout();

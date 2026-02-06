@@ -2,8 +2,10 @@ import Add_to_cart_modal from "@/components/Add_to_cart_modal";
 import Header from "@/components/Header";
 import Products from "@/components/Products";
 import { authContext } from "@/Context/authContext";
+import { shopContext } from "@/Context/shopContext";
 import { Ionicons } from "@expo/vector-icons";
-import { useContext, useState } from "react";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback, useContext, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -13,7 +15,6 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CATEGORIES from "../../DATA/categories.json";
 
 type Product = {
   id: number;
@@ -26,6 +27,17 @@ type Product = {
 
 export default function HomeScreen() {
   const auth = useContext(authContext);
+  const shop = useContext(shopContext);
+  const [searchText, setSearchText] = useState("");
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setSearchText("");
+      };
+    }, []),
+  );
+
+  const CATEGORIES = shop.categories;
   const [bottomSheetVisible, setBottomSheetVisible] = useState<{
     id: number | null;
     visible: boolean;
@@ -46,27 +58,49 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Header />
-        {/* Search */}
+
         <View style={styles.searchBox}>
           <Ionicons name="search" size={20} color="#9CA3AF" />
           <TextInput
+            value={searchText}
+            onChangeText={setSearchText}
             placeholder="Search products"
             placeholderTextColor="#9CA3AF"
             style={styles.searchInput}
           />
         </View>
-        {/* Categories */}
+
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Categories</Text>
+          <TouchableOpacity
+            onPress={() => router.navigate("/(protected)/categories")}
+          >
+            <Text style={styles.seeAll}>See all categories</Text>
+          </TouchableOpacity>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {CATEGORIES.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.categoryChip}>
+            <TouchableOpacity
+              key={item.id}
+              style={styles.categoryChip}
+              onPress={() => {
+                router.navigate({
+                  pathname: "/(protected)/shop",
+                  params: {
+                    categoryId: item.id,
+                  },
+                });
+              }}
+            >
               <Text style={styles.categoryText}>{item.title}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <Products setBottomSheetVisible={setBottomSheetVisible} />
+        <Products
+          searchText={searchText}
+          categoryId="popular"
+          setBottomSheetVisible={setBottomSheetVisible}
+        />
       </ScrollView>
       {bottomSheetVisible.visible && addToCart(bottomSheetVisible.id)}
     </SafeAreaView>

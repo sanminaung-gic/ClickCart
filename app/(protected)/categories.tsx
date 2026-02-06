@@ -1,4 +1,7 @@
+import { shopContext } from "@/Context/shopContext";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { useContext } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -8,16 +11,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const CATEGORIES = [
-  { id: "1", name: "Electronics", icon: "phone-portrait-outline" },
-  { id: "2", name: "Fashion", icon: "shirt-outline" },
-  { id: "3", name: "Food", icon: "fast-food-outline" },
-  { id: "4", name: "Sports", icon: "football-outline" },
-  { id: "5", name: "Home", icon: "home-outline" },
-  { id: "6", name: "Beauty", icon: "sparkles-outline" },
-];
-
 export default function CategoriesScreen() {
+  const shop = useContext(shopContext);
+  const CATEGORIES = shop.categories;
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Categories</Text>
@@ -25,15 +21,25 @@ export default function CategoriesScreen() {
       <FlatList
         data={CATEGORIES}
         numColumns={2}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => String(item.id)}
         columnWrapperStyle={{ justifyContent: "space-between" }}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() =>
+              router.navigate({
+                pathname: "/(protected)/shop",
+                params: {
+                  categoryId: item.id,
+                },
+              })
+            }
+          >
             <View style={styles.iconBox}>
               <Ionicons name={item.icon as any} size={26} color="#111827" />
             </View>
-            <Text style={styles.cardText}>{item.name}</Text>
+            <Text style={styles.cardText}>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
