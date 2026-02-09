@@ -24,13 +24,14 @@ const ProductCard = React.memo(
 
 const styles = StyleSheet.create({
   productCard: {
-    width: "48%",
+    width: "95%",
     backgroundColor: "#FFFFFF",
     borderRadius: 18,
     padding: 12,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: "#E5E7EB",
+    marginHorizontal: "auto",
   },
   productImage: {
     width: "100%",

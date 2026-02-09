@@ -54,51 +54,6 @@ export default function HomeScreen() {
   };
 
   return (
-    // <SafeAreaView style={styles.container}>
-    //   <Header searchText={searchText} setSearchText={setSearchText} />
-    //   <ScrollView
-    //     style={styles.scrollView}
-    //     showsVerticalScrollIndicator={false}
-    //   >
-    //     <View style={styles.sectionHeader}>
-    //       <Text style={styles.sectionTitle}>Categories</Text>
-    //       <TouchableOpacity
-    //         onPress={() => router.navigate("/(protected)/categories")}
-    //       >
-    //         <Text style={styles.seeAll}>See all categories</Text>
-    //       </TouchableOpacity>
-    //     </View>
-    //     <ScrollView
-    //       style={{ paddingBottom: 20 }}
-    //       horizontal
-    //       showsHorizontalScrollIndicator={false}
-    //     >
-    //       {CATEGORIES.map((item) => (
-    //         <TouchableOpacity
-    //           key={item.id}
-    //           style={styles.categoryChip}
-    //           onPress={() => {
-    //             router.navigate({
-    //               pathname: "/(protected)/shop",
-    //               params: {
-    //                 categoryId: item.id,
-    //               },
-    //             });
-    //           }}
-    //         >
-    //           <Text style={styles.categoryText}>{item.title}</Text>
-    //         </TouchableOpacity>
-    //       ))}
-    //     </ScrollView>
-    //     <Products
-    //       searchText={searchText}
-    //       categoryId="popular"
-    //       setBottomSheetVisible={setBottomSheetVisible}
-    //     />
-    //   </ScrollView>
-    //   {bottomSheetVisible.visible && addToCart(bottomSheetVisible.id)}
-    // </SafeAreaView>
-
     <SafeAreaView style={styles.container}>
       <Header searchText={searchText} setSearchText={setSearchText} />
       <FlatList
@@ -158,7 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF",
     paddingHorizontal: 20,
-    paddingBottom: -20,
+    paddingBottom: -45,
   },
   scrollView: {
     marginTop: 60,

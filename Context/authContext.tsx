@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     restore();
   }, []);
 
+  // Sync currentUser with user state
   const login = async (userName: string, password: string) => {
     const found = DATA.find(
       (u) => u.email === userName && u.password === password,
@@ -64,6 +65,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return null;
   };
 
+  // Logout function to clear user state and AsyncStorage
   const logout = async () => {
     setUser(null);
     try {

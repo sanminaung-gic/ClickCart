@@ -1,15 +1,10 @@
 import { shopContext } from "@/Context/shopContext";
 import { IMAGES } from "@/DATA/images";
 import { Product } from "@/DATA/types";
+import { FlashList } from "@shopify/flash-list";
 import { router } from "expo-router";
-import React, { useCallback, useContext } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React, { useCallback, useContext, useMemo } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ProductCard from "./ProductCard";
 
 const Products = ({
@@ -23,6 +18,19 @@ const Products = ({
 }) => {
   const shop = useContext(shopContext);
   const getImage = useCallback((key: string) => IMAGES[key], []);
+  const products = useMemo(() => {
+    let list = shop.products;
+
+    if (searchText) {
+      const q = searchText.toLowerCase();
+      list = list.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q),
+      );
+    }
+
+    return list;
+  }, [shop.products, searchText]);
 
   const renderProduct = useCallback(
     ({ item }: { item: Product }) => (
@@ -77,147 +85,39 @@ const Products = ({
             <Text style={styles.seeAll}>See all products</Text>
           </TouchableOpacity>
         </View>
-        {/* <View style={styles.productGrid}>
-          {products.length > 0 ? (
-            products.map((item) => (
-              <TouchableOpacity
-                key={item.id}
-                style={styles.productCard}
-                onPress={() =>
-                  setBottomSheetVisible({ id: item.id, visible: true })
-                }
-              >
-                <Image
-                  source={IMAGES[item.image]}
-                  style={styles.productImage}
-                />
-                <Text style={styles.productName}>{item.name}</Text>
-                <Text style={styles.productPrice}>{item.price} Ks</Text>
-              </TouchableOpacity>
-            ))
-          ) : (
-            <View style={styles.empty}>
-              <Text style={styles.emptyText}>No results for {searchText}</Text>
-            </View>
-          )}
-        </View> */}
-
-        <FlatList
-          data={products}
-          keyExtractor={(item) => item.id.toString()}
-          numColumns={2}
-          columnWrapperStyle={{ justifyContent: "space-between" }}
-          // renderItem={({ item }) => (
-          //   <TouchableOpacity
-          //     style={styles.productCard}
-          //     onPress={() =>
-          //       setBottomSheetVisible({ id: item.id, visible: true })
-          //     }
-          //   >
-          //     <Image
-          //       source={getImage(item.image)}
-          //       style={styles.productImage}
-          //       contentFit="cover"
-          //       transition={150}
-          //     />
-          //     <Text style={styles.productName}>{item.name}</Text>
-          //     <Text style={styles.productPrice}>{item.price} Ks</Text>
-          //   </TouchableOpacity>
-          // )}
-          renderItem={renderProduct}
-          removeClippedSubviews
-          initialNumToRender={6}
-          windowSize={5}
-          maxToRenderPerBatch={6}
+        <FlashList
+          {...({
+            data: products,
+            renderItem: renderProduct,
+            keyExtractor: (item: Product) => item.id.toString(),
+            numColumns: 2,
+            estimatedItemSize: 400,
+          } as any)}
         />
       </>
     );
   }
   return (
     <>
-      {shop.categories.map((c) => {
-        let products;
-        if (searchText == "")
-          products = shop.products.filter((p) => p.categoryId == c.id);
-        else
-          products = shop.products.filter(
-            (p) =>
-              (p.name
-                .toLocaleLowerCase()
-                .includes(searchText.toLocaleLowerCase()) ||
-                p.brand
-                  .toLocaleLowerCase()
-                  .includes(searchText.toLocaleLowerCase())) &&
-              p.categoryId == c.id,
-          );
-        return (
-          <View key={c.id}>
-            <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>{c.title}</Text>
-            </View>
-            {/* <View style={styles.productGrid}>
-              {products.length > 0 ? (
-                products.map((item) => (
-                  <TouchableOpacity
-                    key={item.id}
-                    style={styles.productCard}
-                    onPress={() =>
-                      setBottomSheetVisible({ id: item.id, visible: true })
-                    }
-                  >
-                    <Image
-                      source={IMAGES[item.image]}
-                      style={styles.productImage}
-                    />
-                    <Text style={styles.productName}>{item.name}</Text>
-                    <Text style={styles.productPrice}>{item.price} Ks</Text>
-                  </TouchableOpacity>
-                ))
-              ) : (
-                <View style={styles.empty}>
-                  <Text style={styles.emptyText}>
-                    No results for {searchText} in this category
-                  </Text>
-                </View>
-              )}
-            </View> */}
-
-            <FlatList
-              data={products}
-              keyExtractor={(item) => item.id.toString()}
-              numColumns={2}
-              columnWrapperStyle={{ justifyContent: "space-between" }}
-              // renderItem={({ item }) => (
-              //   <TouchableOpacity
-              //     style={styles.productCard}
-              //     onPress={() =>
-              //       setBottomSheetVisible({ id: item.id, visible: true })
-              //     }
-              //   >
-              //     <Image
-              //       source={getImage(item.image)}
-              //       style={styles.productImage}
-              //       contentFit="cover"
-              //       transition={150}
-              //     />
-              //     <Text style={styles.productName}>{item.name}</Text>
-              //     <Text style={styles.productPrice}>{item.price} Ks</Text>
-              //   </TouchableOpacity>
-              // )}
-              renderItem={renderProduct}
-              removeClippedSubviews
-              initialNumToRender={6}
-              windowSize={5}
-              maxToRenderPerBatch={6}
-            />
-          </View>
-        );
-      })}
+      <View>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>All Products</Text>
+        </View>
+        <FlashList
+          {...({
+            data: products,
+            renderItem: renderProduct,
+            keyExtractor: (item: Product) => item.id.toString(),
+            numColumns: 2,
+            estimatedItemSize: 400,
+          } as any)}
+        />
+      </View>
     </>
   );
 };
 
-export default Products;
+export default React.memo(Products);
 
 const styles = StyleSheet.create({
   empty: {

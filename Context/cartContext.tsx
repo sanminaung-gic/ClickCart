@@ -31,6 +31,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const auth = useContext(authContext);
 
+  // Function to add item to cart, if item already exists, increase quantity
   const addItem = (item: CartItem) => {
     setItems((prevItems) => {
       const existingItem = prevItems.find((i) => i.id === item.id);
@@ -49,6 +50,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
+  // Function to increase quantity of an item in the cart
   const increase = (itemId: number) => {
     setItems((prev) =>
       prev.map((item) =>
@@ -57,6 +59,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     );
   };
 
+  // Function to decrease quantity of an item in the cart, if quantity becomes 0, remove item
   const decrease = (itemId: number) => {
     setItems((prev) =>
       prev
@@ -74,6 +77,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setItems([]);
   };
 
+  // Function to place order, creates a new order with current cart items, adds notifications for order processing and confirmation
   const placeOrder = () => {
     const newOrder = {
       id: orders.length > 0 ? orders[orders.length - 1].id + 1 : 1,
