@@ -24,7 +24,10 @@ const Header = ({
 }) => {
   const [cartVisible, setCartVisible] = useState(false);
   const auth = useContext(authContext);
-  const itemsCount = useContext(cartContext).items.length;
+  const itemsCount = useContext(cartContext).items.reduce(
+    (c, i) => c + i.quantity,
+    0,
+  );
   return (
     <>
       <View style={styles.header}>

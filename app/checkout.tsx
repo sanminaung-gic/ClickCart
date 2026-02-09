@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   footer: {
-    position: "absolute",
+    position: "relative",
     bottom: 20,
     left: 0,
     right: 0,

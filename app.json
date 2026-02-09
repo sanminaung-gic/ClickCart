@@ -6,6 +6,15 @@
     "orientation": "portrait",
     "scheme": "clickcart",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/images/app-icon.png",
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "dark": {
+        "backgroundColor": "#000000"
+      }
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true

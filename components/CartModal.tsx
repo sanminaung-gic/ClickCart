@@ -5,7 +5,6 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import React, { useContext } from "react";
 import {
-  FlatList,
   Modal,
   StyleSheet,
   Text,
@@ -91,7 +90,7 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
                 </TouchableOpacity>
               </View>
 
-              <FlatList
+              {/* <FlatList
                 data={itemsInCart}
                 keyExtractor={(i) => i.id.toString()}
                 ItemSeparatorComponent={() => <View style={styles.sep} />}
@@ -99,8 +98,19 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
                 ListEmptyComponent={
                   <Text style={styles.emptyText}>Your cart is empty</Text>
                 }
+                contentContainerStyle={{ paddingBottom: 8 }}
                 style={styles.list}
-              />
+              /> */}
+              {itemsInCart.length > 0 ? (
+                itemsInCart.map((i) => (
+                  <React.Fragment key={i.id}>
+                    {renderItem({ item: i })}
+                    <View style={styles.sep} />
+                  </React.Fragment>
+                ))
+              ) : (
+                <Text style={styles.emptyText}>Your cart is empty</Text>
+              )}
 
               <View style={styles.totals}>
                 <View style={styles.totalRow}>
@@ -173,7 +183,7 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 18, color: "#fff", fontWeight: "600" },
   closeBtn: { padding: 6 },
-  list: { maxHeight: 260, marginTop: 8 },
+  list: { maxHeight: 260, marginTop: 8, flexGrow: 0 },
   itemRow: {
     flexDirection: "row",
     alignItems: "center",
