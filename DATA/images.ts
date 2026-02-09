@@ -21,7 +21,6 @@ export const IMAGES: Record<string, any> = {
   jean: require("@/assets/images/fashion/jean.jpg"),
   trouser: require("@/assets/images/fashion/trouser.jpg"),
   hoddie: require("@/assets/images/fashion/hoddie.webp"),
-  pasoe: require("@/assets/images/fashion/pasoe.jpg"),
   skirt: require("@/assets/images/fashion/skirt.webp"),
   heel: require("@/assets/images/fashion/heel.jpg"),
   sandal: require("@/assets/images/fashion/sandal.webp"),
@@ -42,7 +41,6 @@ export const IMAGES: Record<string, any> = {
 
   //Sports
   football: require("@/assets/images/sports/football.jpg"),
-  tennisBall: require("@/assets/images/sports/tennisBall.png"),
   badmintonRacket: require("@/assets/images/sports/badmintonRacket.webp"),
   tennisRacket: require("@/assets/images/sports/tennisRacket.jpg"),
   footballBoot: require("@/assets/images/sports/footballBoot.png"),

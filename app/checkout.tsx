@@ -2,11 +2,11 @@ import { authContext } from "@/Context/authContext";
 import { cartContext } from "@/Context/cartContext";
 import { IMAGES } from "@/DATA/images";
 import { Ionicons } from "@expo/vector-icons";
+import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useContext, useState } from "react";
 import {
   ActivityIndicator,
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: "absolute",
-    bottom: 0,
+    bottom: 20,
     left: 0,
     right: 0,
     padding: 16,

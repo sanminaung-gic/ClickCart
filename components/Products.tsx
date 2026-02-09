@@ -1,8 +1,16 @@
 import { shopContext } from "@/Context/shopContext";
 import { IMAGES } from "@/DATA/images";
+import { Product } from "@/DATA/types";
 import { router } from "expo-router";
-import React, { useContext } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useCallback, useContext } from "react";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import ProductCard from "./ProductCard";
 
 const Products = ({
   searchText,
@@ -14,6 +22,18 @@ const Products = ({
   setBottomSheetVisible: any;
 }) => {
   const shop = useContext(shopContext);
+  const getImage = useCallback((key: string) => IMAGES[key], []);
+
+  const renderProduct = useCallback(
+    ({ item }: { item: Product }) => (
+      <ProductCard
+        item={item}
+        onPress={() => setBottomSheetVisible({ id: item.id, visible: true })}
+      />
+    ),
+    [setBottomSheetVisible],
+  );
+
   if (categoryId) {
     let category, products;
     if (categoryId == "popular") {
@@ -57,7 +77,7 @@ const Products = ({
             <Text style={styles.seeAll}>See all products</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.productGrid}>
+        {/* <View style={styles.productGrid}>
           {products.length > 0 ? (
             products.map((item) => (
               <TouchableOpacity
@@ -80,7 +100,36 @@ const Products = ({
               <Text style={styles.emptyText}>No results for {searchText}</Text>
             </View>
           )}
-        </View>
+        </View> */}
+
+        <FlatList
+          data={products}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          columnWrapperStyle={{ justifyContent: "space-between" }}
+          // renderItem={({ item }) => (
+          //   <TouchableOpacity
+          //     style={styles.productCard}
+          //     onPress={() =>
+          //       setBottomSheetVisible({ id: item.id, visible: true })
+          //     }
+          //   >
+          //     <Image
+          //       source={getImage(item.image)}
+          //       style={styles.productImage}
+          //       contentFit="cover"
+          //       transition={150}
+          //     />
+          //     <Text style={styles.productName}>{item.name}</Text>
+          //     <Text style={styles.productPrice}>{item.price} Ks</Text>
+          //   </TouchableOpacity>
+          // )}
+          renderItem={renderProduct}
+          removeClippedSubviews
+          initialNumToRender={6}
+          windowSize={5}
+          maxToRenderPerBatch={6}
+        />
       </>
     );
   }
@@ -106,7 +155,7 @@ const Products = ({
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>{c.title}</Text>
             </View>
-            <View style={styles.productGrid}>
+            {/* <View style={styles.productGrid}>
               {products.length > 0 ? (
                 products.map((item) => (
                   <TouchableOpacity
@@ -131,7 +180,36 @@ const Products = ({
                   </Text>
                 </View>
               )}
-            </View>
+            </View> */}
+
+            <FlatList
+              data={products}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: "space-between" }}
+              // renderItem={({ item }) => (
+              //   <TouchableOpacity
+              //     style={styles.productCard}
+              //     onPress={() =>
+              //       setBottomSheetVisible({ id: item.id, visible: true })
+              //     }
+              //   >
+              //     <Image
+              //       source={getImage(item.image)}
+              //       style={styles.productImage}
+              //       contentFit="cover"
+              //       transition={150}
+              //     />
+              //     <Text style={styles.productName}>{item.name}</Text>
+              //     <Text style={styles.productPrice}>{item.price} Ks</Text>
+              //   </TouchableOpacity>
+              // )}
+              renderItem={renderProduct}
+              removeClippedSubviews
+              initialNumToRender={6}
+              windowSize={5}
+              maxToRenderPerBatch={6}
+            />
           </View>
         );
       })}
@@ -163,11 +241,6 @@ const styles = StyleSheet.create({
   seeAll: {
     fontSize: 14,
     color: "#2563EB",
-  },
-  productGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
   },
   productCard: {
     width: "48%",

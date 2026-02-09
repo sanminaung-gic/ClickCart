@@ -1,4 +1,5 @@
 import { authContext } from "@/Context/authContext";
+import { cartContext } from "@/Context/cartContext";
 import { IMAGES } from "@/DATA/images";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
@@ -8,6 +9,7 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -22,6 +24,7 @@ const Header = ({
 }) => {
   const [cartVisible, setCartVisible] = useState(false);
   const auth = useContext(authContext);
+  const itemsCount = useContext(cartContext).items.length;
   return (
     <>
       <View style={styles.header}>
@@ -53,6 +56,11 @@ const Header = ({
           style={styles.notification}
           onPress={() => setCartVisible(!cartVisible)}
         >
+          {itemsCount > 0 && (
+            <View style={styles.itemsCount}>
+              <Text style={styles.itemsCountText}>{itemsCount}</Text>
+            </View>
+          )}
           <Ionicons name="cart-outline" size={22} color="#111827" />
         </TouchableOpacity>
       </View>
@@ -97,11 +105,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     height: 60,
-    zIndex: 100,
+    paddingBottom: 20,
   },
   headerImage: {
     width: 40,
     height: 40,
     borderRadius: 20,
+  },
+  itemsCount: {
+    position: "absolute",
+    top: -4,
+    right: -4,
+    backgroundColor: "#EF4444",
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1,
+  },
+  itemsCountText: {
+    color: "#fff",
+    fontSize: 10,
+    fontWeight: "600",
   },
 });

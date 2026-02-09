@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LoginScreen() {
@@ -27,52 +28,50 @@ export default function LoginScreen() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.title}>ClickCart</Text>
-        <Ionicons
-          name="cart-sharp"
-          size={70}
-          color="#0A0A0A"
-          style={{ alignSelf: "center", marginBottom: 30 }}
-        />
-        <Text style={styles.login}>Login</Text>
-        <Text style={styles.subtitle}>Login to continue shopping</Text>
-      </View>
-
-      {/* Form */}
-      <View style={styles.form}>
-        <View style={styles.inputWrapper}>
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            placeholder="example@email.com"
-            placeholderTextColor="#9CA3AF"
-            style={styles.input}
-            onChangeText={setUserName}
+      <KeyboardAwareScrollView bottomOffset={130}>
+        <View style={styles.header}>
+          <Text style={styles.title}>ClickCart</Text>
+          <Ionicons
+            name="cart-sharp"
+            size={70}
+            color="#0A0A0A"
+            style={{ alignSelf: "center", marginBottom: 30 }}
           />
+          <Text style={styles.login}>Login</Text>
+          <Text style={styles.subtitle}>Login to continue shopping</Text>
         </View>
+        <View style={styles.form}>
+          <View style={styles.inputWrapper}>
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              placeholder="example@email.com"
+              placeholderTextColor="#9CA3AF"
+              style={styles.input}
+              onChangeText={setUserName}
+            />
+          </View>
 
-        <View style={styles.inputWrapper}>
-          <Text style={styles.label}>Password</Text>
-          <TextInput
-            placeholder="••••••••"
-            placeholderTextColor="#9CA3AF"
-            secureTextEntry
-            style={styles.input}
-            onChangeText={setPassword}
-          />
+          <View style={styles.inputWrapper}>
+            <Text style={styles.label}>Password</Text>
+            <TextInput
+              placeholder="••••••••"
+              placeholderTextColor="#9CA3AF"
+              secureTextEntry
+              style={styles.input}
+              onChangeText={setPassword}
+            />
+          </View>
+
+          <TouchableOpacity>
+            <Text style={styles.forgot}>Forgot password?</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.loginBtn} onPress={loginHandler}>
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableOpacity>
         </View>
+      </KeyboardAwareScrollView>
 
-        <TouchableOpacity>
-          <Text style={styles.forgot}>Forgot password?</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.loginBtn} onPress={loginHandler}>
-          <Text style={styles.loginText}>Login</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Footer */}
       <View style={styles.footer}>
         <Text style={styles.footerText}>Don’t have an account?</Text>
         <TouchableOpacity>

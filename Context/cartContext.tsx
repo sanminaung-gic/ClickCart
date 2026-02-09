@@ -1,5 +1,6 @@
 import { CartItem, Notifiaction, Order } from "@/DATA/types";
 import { createContext, useContext, useState } from "react";
+import Toast from "react-native-toast-message";
 import { authContext } from "./authContext";
 export const cartContext = createContext<{
   orders: Array<Order>;
@@ -40,6 +41,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         return [...prevItems, { ...item }];
       }
+    });
+    Toast.show({
+      type: "success",
+      text1: "Added to cart",
+      text2: item.name,
     });
   };
 
@@ -82,6 +88,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     };
     setOrders((prevOrders) => [...prevOrders, newOrder]);
     setItems([]);
+    Toast.show({
+      type: "success",
+      text1: "Order Placed",
+      text2: `Your order #${newOrder.id} has been placed successfully!`,
+    });
     setTimeout(() => {
       setNotifications((prevNotifications) => {
         const lastId =

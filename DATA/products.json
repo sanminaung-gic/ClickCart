@@ -181,15 +181,6 @@
     "popular": true
   },
   {
-    "id": 20,
-    "categoryId": 2,
-    "brand": "TradStyle",
-    "name": "Men's Pasoe",
-    "price": 80000,
-    "image": "pasoe",
-    "desc": "Traditional Pasoe with soft, comfortable fabric. Perfect for cultural events or daily wear."
-  },
-  {
     "id": 21,
     "categoryId": 2,
     "brand": "FemmeFit",
@@ -337,15 +328,6 @@
     "price": 45000,
     "image": "football",
     "desc": "High-quality football designed for durability and optimal performance on all types of fields. Perfect for training and matches."
-  },
-  {
-    "id": 37,
-    "categoryId": 4,
-    "brand": "AceSport",
-    "name": "Tennis Ball",
-    "price": 5000,
-    "image": "tennisBall",
-    "desc": "Professional-grade tennis ball with consistent bounce and durability. Ideal for practice and matches."
   },
   {
     "id": 38,

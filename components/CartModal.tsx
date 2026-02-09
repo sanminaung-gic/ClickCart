@@ -1,11 +1,11 @@
 import { cartContext } from "@/Context/cartContext";
 import { IMAGES } from "@/DATA/images";
 import { Ionicons } from "@expo/vector-icons";
+import { Image } from "expo-image";
 import { router } from "expo-router";
 import React, { useContext } from "react";
 import {
   FlatList,
-  Image,
   Modal,
   StyleSheet,
   Text,
@@ -111,6 +111,7 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
                   <Text style={styles.totalLabel}>Shipping</Text>
                   <Text style={styles.totalValue}>{formatPrice(shipping)}</Text>
                 </View>
+                <View style={styles.sep} />
                 <View style={[styles.totalRow, { marginTop: 6 }]}>
                   <Text style={[styles.totalLabel, { fontWeight: "700" }]}>
                     Total

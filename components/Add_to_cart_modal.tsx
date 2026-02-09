@@ -24,7 +24,7 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
 
   const cart = useContext(cartContext);
 
-  const snapPoints = useMemo(() => ["50%", "90%"], []);
+  const snapPoints = useMemo(() => ["50%", "100%"], []);
 
   const renderBackdrop = useCallback(
     (props: React.ComponentProps<typeof BottomSheetBackdrop>) => (

@@ -1,6 +1,7 @@
 import { User } from "@/DATA/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useEffect, useState } from "react";
+import Toast from "react-native-toast-message";
 import DATA from "../DATA/users.json";
 type AuthContextType = {
   currentUser?: User;
@@ -49,6 +50,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       } catch (e) {
         // ignore storage errors for now
       }
+      Toast.show({
+        type: "success",
+        text1: "Login Successful",
+        text2: `Welcome back, ${found.name}!`,
+      });
       return found;
     }
     setUser(null);
