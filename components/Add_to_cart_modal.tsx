@@ -83,7 +83,7 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
               <TouchableOpacity
                 style={styles.qtyBtn}
                 onPress={() => {
-                  if (quantity > 0) {
+                  if (quantity > 1) {
                     setQuantity(quantity - 1);
                   }
                 }}

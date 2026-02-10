@@ -211,15 +211,6 @@
     "popular": true
   },
   {
-    "id": 24,
-    "categoryId": 2,
-    "brand": "BuckleUp",
-    "name": "Leather Belt",
-    "price": 50000,
-    "image": "belt",
-    "desc": "Classic leather belt with sturdy buckle. Perfect to complement formal or casual outfits."
-  },
-  {
     "id": 25,
     "categoryId": 2,
     "brand": "SunShade",
@@ -438,15 +429,6 @@
     "desc": "Strong and durable garbage bags for home and office use. Leak-resistant and convenient to use."
   },
   {
-    "id": 50,
-    "categoryId": 5,
-    "brand": "KitchenWare",
-    "name": "Plate",
-    "price": 5000,
-    "image": "plate",
-    "desc": "Simple and elegant plate, ideal for daily meals. Durable and easy to clean."
-  },
-  {
     "id": 51,
     "categoryId": 5,
     "brand": "KitchenWare",
@@ -499,15 +481,6 @@
     "price": 12000,
     "image": "cuttingBoard",
     "desc": "Durable cutting board suitable for vegetables, fruits, and meat. Easy to clean and maintain."
-  },
-  {
-    "id": 57,
-    "categoryId": 5,
-    "brand": "TimeKeep",
-    "name": "Clock",
-    "price": 8000,
-    "image": "clock",
-    "desc": "Stylish wall clock with clear display. Perfect for home or office use."
   },
   {
     "id": 58,

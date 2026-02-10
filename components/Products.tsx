@@ -1,5 +1,4 @@
 import { shopContext } from "@/Context/shopContext";
-import { IMAGES } from "@/DATA/images";
 import { Product } from "@/DATA/types";
 import { FlashList } from "@shopify/flash-list";
 import { router } from "expo-router";
@@ -17,10 +16,8 @@ const Products = ({
   setBottomSheetVisible: any;
 }) => {
   const shop = useContext(shopContext);
-  const getImage = useCallback((key: string) => IMAGES[key], []);
   const products = useMemo(() => {
     let list = shop.products;
-
     if (searchText) {
       const q = searchText.toLowerCase();
       list = list.filter(
@@ -34,12 +31,9 @@ const Products = ({
 
   const renderProduct = useCallback(
     ({ item }: { item: Product }) => (
-      <ProductCard
-        item={item}
-        onPress={() => setBottomSheetVisible({ id: item.id, visible: true })}
-      />
+      <ProductCard item={item} setBottomSheetVisible={setBottomSheetVisible} />
     ),
-    [setBottomSheetVisible],
+    [],
   );
 
   if (categoryId) {
