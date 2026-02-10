@@ -5,6 +5,7 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import React, { useContext } from "react";
 import {
+  FlatList,
   Modal,
   StyleSheet,
   Text,
@@ -24,12 +25,10 @@ type Item = {
 type Props = {
   visible: boolean;
   onClose: () => void;
-  items?: Item[];
-  onQtyChange?: (id: number, qty: number) => void;
   onCheckout?: () => void;
 };
 
-const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
+const CartModal = ({ visible, onClose }: Props) => {
   const cart = useContext(cartContext);
   const itemsInCart = cart.items;
 
@@ -72,7 +71,7 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
         </TouchableOpacity>
       </View>
       <Text style={styles.priceText}>
-        {formatPrice((item.price ?? 0) * (item.quantity ?? 1))}
+        {(item.price ?? 0) * (item.quantity ?? 1)}
       </Text>
     </View>
   );
@@ -81,7 +80,7 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
     <Modal visible={visible} animationType="fade" transparent>
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.backdrop}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => {}}>
             <View style={styles.card}>
               <View style={styles.header}>
                 <Text style={styles.title}>Cart</Text>
@@ -89,8 +88,8 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
                   <Ionicons name="close" size={20} color="#ffffff" />
                 </TouchableOpacity>
               </View>
-
-              {/* <FlatList
+              <FlatList
+                nestedScrollEnabled={true}
                 data={itemsInCart}
                 keyExtractor={(i) => i.id.toString()}
                 ItemSeparatorComponent={() => <View style={styles.sep} />}
@@ -100,26 +99,31 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
                 }
                 contentContainerStyle={{ paddingBottom: 8 }}
                 style={styles.list}
-              /> */}
-              {itemsInCart.length > 0 ? (
-                itemsInCart.map((i) => (
-                  <React.Fragment key={i.id}>
-                    {renderItem({ item: i })}
-                    <View style={styles.sep} />
-                  </React.Fragment>
-                ))
-              ) : (
-                <Text style={styles.emptyText}>Your cart is empty</Text>
-              )}
+              />
+              {/* <ScrollView
+                style={styles.list}
+                contentContainerStyle={{ paddingBottom: 8 }}
+              >
+                {itemsInCart.length > 0 ? (
+                  itemsInCart.map((i) => (
+                    <React.Fragment key={i.id}>
+                      {renderItem({ item: i })}
+                      <View style={styles.sep} />
+                    </React.Fragment>
+                  ))
+                ) : (
+                  <Text style={styles.emptyText}>Your cart is empty</Text>
+                )}
+              </ScrollView> */}
 
               <View style={styles.totals}>
                 <View style={styles.totalRow}>
                   <Text style={styles.totalLabel}>Subtotal</Text>
-                  <Text style={styles.totalValue}>{formatPrice(subtotal)}</Text>
+                  <Text style={styles.totalValue}>{subtotal}</Text>
                 </View>
                 <View style={styles.totalRow}>
                   <Text style={styles.totalLabel}>Shipping</Text>
-                  <Text style={styles.totalValue}>{formatPrice(shipping)}</Text>
+                  <Text style={styles.totalValue}>{shipping}</Text>
                 </View>
                 <View style={styles.sep} />
                 <View style={[styles.totalRow, { marginTop: 6 }]}>
@@ -127,7 +131,7 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
                     Total
                   </Text>
                   <Text style={[styles.totalValue, { fontWeight: "700" }]}>
-                    {formatPrice(total)}
+                    {total}
                   </Text>
                 </View>
               </View>
@@ -149,11 +153,6 @@ const CartModal = ({ visible, onClose, items = [], onQtyChange }: Props) => {
     </Modal>
   );
 };
-
-function formatPrice(n: number) {
-  // keep the same formatting style as screenshot (no decimals)
-  return `${n}`;
-}
 
 const styles = StyleSheet.create({
   backdrop: {

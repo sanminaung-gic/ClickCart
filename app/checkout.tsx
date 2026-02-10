@@ -23,12 +23,11 @@ export default function CheckoutScreen() {
 
   // checkout function
   const checkout = () => {
-    console.log(loading);
     setLoading(true);
     setTimeout(() => {
       Cart.placeOrder();
       setLoading(false);
-      router.navigate("/(protected)/home");
+      router.navigate("/(protected)/profile");
     }, 1000);
   };
 
@@ -293,7 +292,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: "relative",
-    bottom: 20,
+    bottom: 0,
     left: 0,
     right: 0,
     padding: 16,

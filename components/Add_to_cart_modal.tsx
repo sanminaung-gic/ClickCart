@@ -56,26 +56,6 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.header}>
-          {/* Add to cart */}
-          <TouchableOpacity
-            style={styles.addBtn}
-            onPress={() => {
-              cart.addItem({
-                id: product.id,
-                name: product.name,
-                brand: product.brand,
-                image: product.image,
-                price: product.price,
-                quantity,
-              });
-              if (onClose) onClose();
-            }}
-          >
-            <Text style={styles.addText}>Add to Cart</Text>
-          </TouchableOpacity>
-        </View>
-
         <View
           style={{
             flexDirection: "row",
@@ -122,10 +102,30 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
             </View>
           </View>
         </View>
+        <View style={styles.header}>
+          <View>
+            {/* Product Info */}
+            <Text style={styles.name}>{product.name}</Text>
+            <Text style={styles.price}>{product.price} Ks</Text>
+          </View>
 
-        {/* Product Info */}
-        <Text style={styles.name}>{product.name}</Text>
-        <Text style={styles.price}>{product.price} Ks</Text>
+          <TouchableOpacity
+            style={styles.addBtn}
+            onPress={() => {
+              cart.addItem({
+                id: product.id,
+                name: product.name,
+                brand: product.brand,
+                image: product.image,
+                price: product.price,
+                quantity,
+              });
+              if (onClose) onClose();
+            }}
+          >
+            <Text style={styles.addText}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
 
         <Text style={styles.desc}>{product.desc}</Text>
       </BottomSheetScrollView>
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
   },

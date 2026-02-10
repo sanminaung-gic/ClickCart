@@ -55,6 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         type: "success",
         text1: "Login Successful",
         text2: `Welcome back, ${found.name}!`,
+        topOffset: 30,
       });
       return found;
     }

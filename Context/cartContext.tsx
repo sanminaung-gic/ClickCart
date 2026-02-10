@@ -47,6 +47,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       type: "success",
       text1: "Added to cart",
       text2: item.name,
+      topOffset: 30,
     });
   };
 
@@ -96,6 +97,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       type: "success",
       text1: "Order Placed",
       text2: `Your order #${newOrder.id} has been placed successfully!`,
+      topOffset: 30,
     });
     setTimeout(() => {
       setNotifications((prevNotifications) => {

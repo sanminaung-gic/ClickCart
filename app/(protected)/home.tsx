@@ -57,7 +57,7 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.container}>
       <Header searchText={searchText} setSearchText={setSearchText} />
       <FlatList
-        data={[]} // products handled inside Products
+        data={[]}
         keyExtractor={() => "dummy"}
         showsVerticalScrollIndicator={false}
         renderItem={null}
