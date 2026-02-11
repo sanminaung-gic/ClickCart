@@ -66,11 +66,8 @@ const Header = ({
           )}
           <Ionicons name="cart-outline" size={22} color="#111827" />
         </TouchableOpacity>
-        <CartModal
-          visible={cartVisible}
-          onClose={() => setCartVisible(false)}
-        />
       </View>
+      <CartModal visible={cartVisible} onClose={() => setCartVisible(false)} />
     </>
   );
 };
