@@ -27,11 +27,11 @@ In the output, you'll find options to open the app in a
 
 | Splash Screen | Login | Home |
 |---------------|--------|------|
-| <img src="https://github.com/user-attachments/assets/ec4e9251-9581-4ff5-b549-458b92d519fe" width="300"/> | <img src="https://github.com/user-attachments/assets/13930c44-70ff-4e81-be72-3b164adb7ffd" width="300"/> |<img width="296" height="1440" alt="image" src="https://github.com/user-attachments/assets/1570c29b-0f5b-4869-ae36-2533c03db661" />|
+| <img src="https://github.com/user-attachments/assets/ec4e9251-9581-4ff5-b549-458b92d519fe" width="297"/> | <img src="https://github.com/user-attachments/assets/13930c44-70ff-4e81-be72-3b164adb7ffd" width="300"/> |<img width="296" height="1440" alt="image" src="https://github.com/user-attachments/assets/1570c29b-0f5b-4869-ae36-2533c03db661" />|
 
 | Add-to-cart Modal | Cart Modal | Checkout Screen |
 |-------------------|------------|-----------------|
-|<img width="300" height="1438" alt="image" src="https://github.com/user-attachments/assets/75c47b60-8552-42f1-ba34-bcf6fdbc9825" />|<img width="300" height="1438" alt="image" src="https://github.com/user-attachments/assets/573ce79f-b7d0-4a2d-b50a-19030c8d3553" />|<img width="300" height="1436" alt="image" src="https://github.com/user-attachments/assets/439745a6-5cd4-4a7d-a2ba-c29824caaae3" />
+|<img width="300" height="1438" alt="image" src="https://github.com/user-attachments/assets/75c47b60-8552-42f1-ba34-bcf6fdbc9825" />|<img width="298" height="1438" alt="image" src="https://github.com/user-attachments/assets/573ce79f-b7d0-4a2d-b50a-19030c8d3553" />|<img width="298" height="1436" alt="image" src="https://github.com/user-attachments/assets/439745a6-5cd4-4a7d-a2ba-c29824caaae3" />
 
 | Orders list | Notifications | Categories |
 |-------------|---------|---------------|
