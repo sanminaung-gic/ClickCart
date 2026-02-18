@@ -6,14 +6,12 @@ import { router } from "expo-router";
 import React, { useContext } from "react";
 import {
   FlatList,
-  Modal,
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from "react-native";
-
+import Modal from "react-native-modal";
 type Item = {
   id: number;
   name: string;
@@ -77,30 +75,34 @@ const CartModal = ({ visible, onClose }: Props) => {
   );
 
   return (
-    <Modal visible={visible} animationType="fade" transparent>
-      <TouchableWithoutFeedback onPress={onClose}>
-        <View style={styles.backdrop}>
-          <TouchableWithoutFeedback onPress={() => {}}>
-            <View style={styles.card}>
-              <View style={styles.header}>
-                <Text style={styles.title}>Cart</Text>
-                <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-                  <Ionicons name="close" size={20} color="#ffffff" />
-                </TouchableOpacity>
-              </View>
-              <FlatList
-                nestedScrollEnabled={true}
-                data={itemsInCart}
-                keyExtractor={(i) => i.id.toString()}
-                ItemSeparatorComponent={() => <View style={styles.sep} />}
-                renderItem={renderItem}
-                ListEmptyComponent={
-                  <Text style={styles.emptyText}>Your cart is empty</Text>
-                }
-                contentContainerStyle={{ paddingBottom: 8 }}
-                style={styles.list}
-              />
-              {/* <ScrollView
+    <Modal
+      isVisible={visible}
+      animationIn="slideInRight"
+      animationOut="slideOutRight"
+      onBackdropPress={onClose}
+      style={{ margin: 0, backgroundColor: "transparent" }}
+    >
+      <View style={styles.backdrop}>
+        <View style={styles.card}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Cart</Text>
+            <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
+              <Ionicons name="close" size={20} color="#ffffff" />
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            nestedScrollEnabled={true}
+            data={itemsInCart}
+            keyExtractor={(i) => i.id.toString()}
+            ItemSeparatorComponent={() => <View style={styles.sep} />}
+            renderItem={renderItem}
+            ListEmptyComponent={
+              <Text style={styles.emptyText}>Your cart is empty</Text>
+            }
+            contentContainerStyle={{ paddingBottom: 8 }}
+            style={styles.list}
+          />
+          {/* <ScrollView
                 style={styles.list}
                 contentContainerStyle={{ paddingBottom: 8 }}
               >
@@ -116,40 +118,38 @@ const CartModal = ({ visible, onClose }: Props) => {
                 )}
               </ScrollView> */}
 
-              <View style={styles.totals}>
-                <View style={styles.totalRow}>
-                  <Text style={styles.totalLabel}>Subtotal</Text>
-                  <Text style={styles.totalValue}>{subtotal}</Text>
-                </View>
-                <View style={styles.totalRow}>
-                  <Text style={styles.totalLabel}>Shipping</Text>
-                  <Text style={styles.totalValue}>{shipping}</Text>
-                </View>
-                <View style={styles.sep} />
-                <View style={[styles.totalRow, { marginTop: 6 }]}>
-                  <Text style={[styles.totalLabel, { fontWeight: "700" }]}>
-                    Total
-                  </Text>
-                  <Text style={[styles.totalValue, { fontWeight: "700" }]}>
-                    {total}
-                  </Text>
-                </View>
-              </View>
-
-              <TouchableOpacity
-                disabled={itemsInCart.length === 0}
-                style={styles.checkout}
-                onPress={() => {
-                  onCheckout();
-                  onClose();
-                }}
-              >
-                <Text style={styles.checkoutText}>Checkout</Text>
-              </TouchableOpacity>
+          <View style={styles.totals}>
+            <View style={styles.totalRow}>
+              <Text style={styles.totalLabel}>Subtotal</Text>
+              <Text style={styles.totalValue}>{subtotal}</Text>
             </View>
-          </TouchableWithoutFeedback>
+            <View style={styles.totalRow}>
+              <Text style={styles.totalLabel}>Shipping</Text>
+              <Text style={styles.totalValue}>{shipping}</Text>
+            </View>
+            <View style={styles.sep} />
+            <View style={[styles.totalRow, { marginTop: 6 }]}>
+              <Text style={[styles.totalLabel, { fontWeight: "700" }]}>
+                Total
+              </Text>
+              <Text style={[styles.totalValue, { fontWeight: "700" }]}>
+                {total}
+              </Text>
+            </View>
+          </View>
+
+          <TouchableOpacity
+            disabled={itemsInCart.length === 0}
+            style={styles.checkout}
+            onPress={() => {
+              onCheckout();
+              onClose();
+            }}
+          >
+            <Text style={styles.checkoutText}>Checkout</Text>
+          </TouchableOpacity>
         </View>
-      </TouchableWithoutFeedback>
+      </View>
     </Modal>
   );
 };
@@ -157,12 +157,12 @@ const CartModal = ({ visible, onClose }: Props) => {
 const styles = StyleSheet.create({
   backdrop: {
     flex: 1,
-    backgroundColor: "transparent",
     alignItems: "flex-end",
   },
   card: {
     width: "78%",
-    backgroundColor: "#6B7280",
+    // backgroundColor: "#6B7280",
+    backgroundColor: "#111827",
     borderRadius: 12,
     paddingVertical: 12,
     paddingHorizontal: 12,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 12,
     elevation: 8,
-    marginTop: 50,
+    marginTop: 120,
     marginRight: 20,
   },
   header: {
@@ -234,7 +234,8 @@ const styles = StyleSheet.create({
   totalValue: { color: "#fff" },
   checkout: {
     marginTop: 12,
-    backgroundColor: "#111827",
+    // backgroundColor: "#111827",
+    backgroundColor: "#6B7280",
     paddingVertical: 10,
     borderRadius: 20,
     alignItems: "center",

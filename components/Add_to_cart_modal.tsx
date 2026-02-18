@@ -24,7 +24,10 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
 
   const cart = useContext(cartContext);
 
-  const snapPoints = useMemo(() => ["50%", "100%"], []);
+  const snapPoints = useMemo(
+    () => ["50%", "60%", "70%", "80%", "90%", "100%"],
+    [],
+  );
 
   const renderBackdrop = useCallback(
     (props: React.ComponentProps<typeof BottomSheetBackdrop>) => (
@@ -104,7 +107,6 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
         </View>
         <View style={styles.header}>
           <View>
-            {/* Product Info */}
             <Text style={styles.name}>{product.name}</Text>
             <Text style={styles.price}>{product.price} Ks</Text>
           </View>
@@ -126,7 +128,16 @@ export default function AddToCartSheet({ onClose, productId }: Props) {
             <Text style={styles.addText}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
-
+        <Text
+          style={{
+            color: "#6B7280",
+            fontWeight: "600",
+            fontSize: 20,
+            marginVertical: 4,
+          }}
+        >
+          Brand : {product.brand}
+        </Text>
         <Text style={styles.desc}>{product.desc}</Text>
       </BottomSheetScrollView>
     </BottomSheet>
